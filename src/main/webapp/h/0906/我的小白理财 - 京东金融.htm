@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <script src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/analytics.js" async="" type="text/javascript"></script>
+  <script src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/conversion_async.js" async="" type="text/javascript"></script> 
+  <title>我的小白理财 - 京东金融</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+  <meta http-equiv="Pragma" content="no-cache" /> 
+  <meta http-equiv="Cache-Control" content="no-cache" /> 
+  <meta http-equiv="Expires" content="0" /> 
+  <link rel="icon" href="http://www.jd.com/favicon.ico" mce_href="http://www.jd.com/favicon.ico" type="image/x-icon" /> 
+  <link rel="stylesheet" href="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/base.css" /> 
+ </head> 
+ <body class="page-header"> 
+  <!--header-->
+  <div class="header"> 
+   <!--topbar--> 
+   <div class="topbar" id="topbar"> 
+    <div class="grid-1200 topbar-wrap clearfix"> 
+     <div class="topbar-left"> 
+      <ul class="toplink"> 
+       <li class="toplink-link"> <i class="icon icon-home"></i> <a target="_blank" href="http://www.jd.com/">京东首页</a> </li> 
+      </ul> 
+     </div> 
+     <div class="topbar-right"> 
+      <ul class="topmenu fl"> 
+       <li class="topmenu-item topmenu-userinfo"> <span id="loginbar"><a href="javascript:login();" class="link-login">你好，请登录</a>&nbsp;&nbsp;<a href="javascript:regist();" class="link-regist style-red">免费注册</a></span> </li> 
+       <li class="topmenu-item"> <a href="http://trade.jr.jd.com/trade/tradebuy.action" clstag="jr|keycount|jr_shouye|jiaoyidan">我的交易单</a> </li> 
+       <li id="topbar-vip" class="topmenu-item"><a href="http://vip.jr.jd.com/" clstag="jr|keycount|jr_shouye|topbar_vip">金融会员中心<i class="topmenu-item-new"></i></a></li>
+       <li id="app-jr" class="topmenu-item dropdown topmenu-dropdown" data-hover="topmenu-dropdown-hover"> <i class="drop-arrow"></i> <b class="topmenu-app-ico"></b> <a href="http://m.jr.jd.com/helppage/downApp/jrAppPromote.html" target="_blank" class="topmenu-outline" clstag="jr|keycount|jr_shouye|sjjr">手机金融</a> 
+        <div class="dropbox clearfix"> 
+         <div class="fl"> 
+          <img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/55a60f21N5761d623.png" /> 
+         </div> 
+         <div class="fr"> 
+          <span class="topmenu-app-tip">下载金融客户端</span> 
+          <a class="topmenu-app-iphone" target="_blank" href="https://itunes.apple.com/cn/app/jing-dong-jin-rong/id895682747?mt=8"></a> 
+          <a class="topmenu-app-android" target="_blank" href="http://jrappgw.jd.com/resources/downloadApp.html"></a> 
+         </div> 
+        </div> </li>
+       <li class="topmenu-item"><a href="http://club.jr.jd.com/attPage/getAttList?pro_type=1" clstag="jr|keycount|jr_shouye|guanzhu">我的关注</a></li> 
+       <li id="topbar-help" class="topmenu-item dropdown topmenu-dropdown" data-hover="topmenu-dropdown-hover"> <i class="drop-arrow"></i> <a id="J_topbarFeedback" target="_blank" href="http://ur.jr.jd.com/survey/show?id=131&amp;u=http%3A%2F%2Ftrade.jr.jd.com%2Fxiaobai%2Fmain.action" clstag="jr|keycount|jr_shouye|topbar_feedback" class="topmenu-outline">我要吐槽</a> 
+        <ul class="dropbox"> 
+         <li><a href="http://help.jr.jd.com/" clstag="jr|keycount|jr_shouye|help">帮助中心</a> </li> 
+         <li><a id="J_topbarKf" href="http://chat.jd.com/jd/chat?entry=jd_jr" target="_blank" clstag="jr|keycount|jr_shouye|topbar_kf">在线客服</a></li> 
+         <li><a target="_blank" href="http://jr.jd.com/mail/index.html" clstag="jr|keycount|jr_shouye|topkfmail">客服邮箱</a></li>
+        </ul> </li> 
+       <li class="topmenu-item dropdown topmenu-dropdown" data-hover="topmenu-dropdown-hover"> <i class="drop-arrow"></i> <a href="javascript:;" class="topmenu-sitemap">网站导航</a> 
+        <ul class="dropbox"> 
+         <li><a href="http://list.jr.jd.com/fundlist/1-11-112.htm" clstag="jr|keycount|jr_shouye|hdjjlc">基金理财</a> </li> 
+         <li><a href="http://z.jd.com/" clstag="jr|keycount|jr_shouye|hdyzc">众筹</a></li> 
+         <li><a href="http://baitiao.jd.com/activity/third" clstag="jr|keycount|jr_shouye|hdbt">京东白条</a></li>
+         <li><a href="http://sq.jd.com/X3dvw1" target="_blank" clstag="jr|keycount|jr_shouye|hdwyqb">京东钱包</a></li> 
+        </ul> </li> 
+      </ul> 
+      <ul class="toplink fl"> 
+       <li class="toplink-item toplink-title">&nbsp;</li> 
+       <li class="toplink-item dropdown toplink-dropdown " data-hover="toplink-dropdown-hover"> <i class="icon icon-weixin"></i> 
+        <ul class="dropbox dropbox-weixin"> 
+         <li><img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/topbar-ercode-01.jpg" alt="京东金融" /><h6>京东金融</h6></li> 
+        </ul> </li> 
+       <li class="toplink-item dropdown toplink-dropdown" data-hover="toplink-dropdown-hover"> <i class="icon icon-weibo"></i> 
+        <ul class="dropbox dropbox-weibo"> 
+         <li><img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/topbar-weibo.jpg" alt="京东金融微博" /></li> 
+         <li> 
+          <div class="pub-btn btn-style-0"> 
+           <a class="size12" href="http://weibo.com/u/5057784708" target="_blank" clstag="jr|keycount|jr_shouye|hdblogjr"><img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/topbar-weibo-addbtn.png" />京东金融</a> 
+          </div> </li> 
+        </ul> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <!--topbar end--> 
+   <!--main-nav--> 
+   <div class="main-nav"> 
+    <div class="grid-1200 nav-wrap pr clearfix"> 
+     <div class="main-nav-logo fl"> 
+      <a href="http://jr.jd.com/" clstag="jr|keycount|jr_shouye|jrlogo"> <img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/logo-slogan.png" alt="京东金融" width="164" height="36" /> </a> 
+     </div> 
+     <div class="nav fl"> 
+      <ul class="nav-box fl clearfix" id="navBox"> 
+       <li id="nav-index" class="nav-item"><a class="nav-item-primary" href="http://jr.jd.com/" clstag="jr|keycount|jr_shouye|shouye">首页</a></li> 
+       <li id="nav-licai" class="nav-item"> <a class="nav-item-primary" href="http://licai.jd.com/" clstag="jr|keycount|jr_shouye|jr_shouye_licai">理财</a> 
+        <ul class="dropbox"> 
+         <li><a href="http://xjk.jr.jd.com/index.htm" clstag="jr|keycount|jr_shouye|jjxjk">京东小金库</a></li> 
+         <li><a href="http://trade.jr.jd.com/xiaobai/main.action" clstag="jr|keycount|jr_shouye|xblc">小白理财</a></li> 
+         <li><a href="http://list.jr.jd.com/fundlist/1-11-112.htm" clstag="jr|keycount|jr_shouye|jjlc">基金理财</a></li> 
+         <li><a href="http://bill.jr.jd.com/buy/list.htm" clstag="jr|keycount|jr_shouye|pjlc">票据理财</a></li> 
+         <li><a href="http://dq.jd.com/" clstag="jr|keycount|jr_shouye|bxlc">定期理财</a></li> 
+         <li><a href="http://jdd.jr.jd.com/" clstag="jr|keycount|jr_shouye|fblc">固收理财</a></li> 
+         <li><a href="http://club.jr.jd.com/" clstag="jr|keycount|jr_shouye|cswd">理财问答</a></li> 
+        </ul> </li> 
+       <li id="nav-zhongchou" class="nav-item"> <a class="nav-item-primary" href="http://z.jd.com/" target="_blank" clstag="jr|keycount|jr_shouye|zc">众筹</a> 
+        <ul class="dropbox"> 
+         <li><a href="http://z.jd.com/" target="_blank" clstag="jr|keycount|jr_shouye|cpzc">产品众筹</a></li> 
+         <li><a href="http://dj.jd.com/" target="_blank" clstag="jr|keycount|jr_shouye|gqzc">私募股权</a></li> 
+         <li><a href="http://q.jd.com/" target="_blank" clstag="jr|keycount|jr_shouye|qzc">轻众筹</a></li> 
+         <li><a href="http://zbbs.jd.com/" target="_blank" clstag="jr|keycount|jr_shouye|zcsq">众筹社区</a></li> 
+        </ul> </li> 
+       <li id="nav-baoxian" class="nav-item"> <a class="nav-item-primary" href="http://bao.jd.com/" clstag="jr|keycount|jr_shouye|baoxian">保险</a> 
+        <ul class="dropbox"> 
+         <li><a href="http://bao.jd.com/vehicle" clstag="jr|keycount|jr_shouye|chexian">车险</a></li> 
+         <li><a href="http://bao.jd.com/health" clstag="jr|keycount|jr_shouye|jiankangxian">健康险</a></li> 
+         <li><a href="http://bao.jd.com/accident" clstag="jr|keycount|jr_shouye|yiwaixian">意外险</a></li> 
+         <li><a href="http://bao.jd.com/travel" clstag="jr|keycount|jr_shouye|lvxingxian">旅行险</a></li> 
+        </ul> </li> 
+       <li id="nav-baitiao" class="nav-item"> <a class="nav-item-primary" href="http://baitiao.jd.com/activity/third" clstag="jr|keycount|jr_shouye|bt">白条</a> 
+        <ul class="dropbox"> 
+         <li><a href="http://baitiao.jd.com/activity/third" clstag="jr|keycount|jr_shouye|jdbt">京东白条</a></li> 
+         <li><a href="http://baitiao.jd.com/activity/studentfenqi" clstag="jr|keycount|jr_shouye|btxy">校园白条</a></li> 
+         <li><a href="http://go.jd.com/activity/introduce" clstag="jr|keycount|jr_shouye|btly">旅游白条+</a></li> 
+         <li><a href="http://fang.jd.com/" clstag="jr|keycount|jr_shouye|btzf">安居白条+</a></li> 
+         <li><a href="http://gb.jd.com/" clstag="jr|keycount|jr_shouye|gangbeng">京东钢镚</a></li> 
+         <li><a href="http://jincai.jd.com/" clstag="jr|keycount|jr_shouye|jincai">京东金采</a></li> 
+        </ul> </li> 
+       <li id="nav-loan" class="nav-item"> <a class="nav-item-primary" href="http://loan.jd.com/jdd.html" clstag="jr|keycount|jr_shouye|jingdongdai">京东贷</a> 
+        <ul class="dropbox"> 
+         <li><a href="http://loan.jd.com/jdd.html" clstag="jr|keycount|jr_shouye|jddsy">京东贷首页</a></li> 
+         <li><a href="http://8.jd.com/" clstag="jr|keycount|jr_shouye|wsd">网商贷</a></li> 
+         <li><a href="http://loan.jd.com/home.html" clstag="jr|keycount|jr_shouye|jxd">京小贷</a></li> 
+         <li><a href="http://loan.jd.com/scf/" clstag="jr|keycount|jr_shouye|jbb">京保贝</a></li> 
+        </ul> </li> 
+       <li id="nav-caimi" class="nav-item"> <a class="nav-item-primary" href="http://caimi.jd.com/" clstag="jr|keycount|jr_shouye|caimi">股票</a> </li> 
+      </ul> 
+     </div> 
+     <div class="main-nav-userInfoWrap fr"> 
+      <div id="userInfo" class="main-nav-userinfo"> 
+       <div class="main-nav-userimg"> 
+        <div class="userimg-mask">
+         <a href="http://trade.jr.jd.com/centre/browse.action"></a>
+        </div> 
+        <img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/user-unlogin-icon.png" id="userSmaImage" /> 
+        <span></span> 
+       </div> 
+       <p><a href="http://trade.jr.jd.com/centre/browse.action">我的资产</a><i></i></p> 
+       <ul> 
+        <li> <a href="http://trade.jr.jd.com/centre/browse.action" clstag="jr|keycount|jr_shouye|myzl"> <span class="fl">资产总览</span> <span class="ajaxData fr" data-name="jRTotal"></span> </a> </li> 
+        <li> <a href="http://trade.jr.jd.com/centre/jrbincome.action" clstag="jr|keycount|jr_shouye|myxjk"> <span class="fl">京东小金库</span> <span class="ajaxData fr" data-name="jRBAccount"></span> </a> </li> 
+        <li> <a href="http://trade.jr.jd.com/centre/financing.action" clstag="jr|keycount|jr_shouye|mylc"> <span class="fl">我的理财</span> <span class="ajaxData fr" data-name="jJAccount"></span> </a> </li>
+        <li id="userInfo-baitiao"><a href="http://baitiao.jd.com/creditUser/list" clstag="jr|keycount|jr_shouye|mybaitiao"><span class="fl">我的白条</span><span class="fr"></span></a></li> 
+        <li> <a href="http://z.jd.com/funding/myCrowdfunding.action" clstag="jr|keycount|jr_shouye|myzc"> <span class="fl">我的众筹</span> <span class="fr"></span> </a> </li>
+        <li id="userInfo-baoxian"><a href="http://bao.jd.com/order" clstag="jr|keycount|jr_shouye|mybaoxian"><span class="fl">我的保单</span><span class="fr"></span></a></li>
+        <li id="userInfo-caimi"><a href="http://caimi.jd.com/center/person/asset.html" clstag="jr|keycount|jr_shouye|mycaimi"><span class="fl">我的财迷</span><span class="fr"></span></a></li> 
+        <li> <a href="http://trade.jr.jd.com/trade/tradebuy.action"> <span class="fl">我的交易单</span> <span class="fr"></span> </a> </li> 
+        <li id="userInfo-msg"><a href="http://courier.jr.jd.com/mc/list" clstag="jr|keycount|jr_shouye|mymsg"><span class="fl">消息中心</span><span class="fr"></span></a></li>
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!--main-nav end-->
+  </div>
+  <script src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/wl.js" async="" type="text/javascript"></script>
+  <script src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/joya.js" async="" type="text/javascript"></script>
+  <script src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/gtm.js" async=""></script>
+  <script type="text/javascript">    (function(){if(typeof jrBase!=='undefined'){if(typeof jrBase.navId!=='undefined'){var mainNav=document.getElementById(jrBase.navId);if(mainNav){mainNav.className+=' current'}}if(typeof jrBase.navSubId!=='undefined'){var subNav=document.getElementById(jrBase.navSubId);if(subNav){subNav.className+=' current'}}}})();</script>
+  <!--header end--> 
+  <script> 
+window.jrBase = { 
+	assetsId:'myNoob',	footerFix: false,
+    // 是否启用侧边工具栏 包含 返回顶部 和 问卷反馈 
+    sidebar: true, 
+    // 问卷反馈url id为业务线配置 
+    feedbackUrl: 'http://ur.jr.jd.com/survey/show?id=131',
+    jrQaUrl: 'http://club.jr.jd.com/licai/jingxuan'
+}; 
+</script> 
+  <script type="text/javascript">
+    (function(){if(typeof jrBase!=='undefined'){if(typeof jrBase.navId!=='undefined'){var mainNav=document.getElementById(jrBase.navId);if(mainNav){mainNav.className+=' current'}}if(typeof jrBase.navSubId!=='undefined'){var subNav=document.getElementById(jrBase.navSubId);if(subNav){subNav.className+=' current'}}}})();
+</script> 
+  <link rel="stylesheet" href="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/page.css" /> 
+  <!--header end--> 
+  <!--container--> 
+  <div class="page"> 
+  	<!--study block start--> 
+   <div class="section1"> 
+    <div class="main-box"> 
+     <div class="title"> 
+      <div class="bg fadeInOut"></div> 
+      <div class="logo"></div> 
+     </div> 
+     <!--study animation--> 
+     <div style="margin-left: 5px; transform: translateX(0px);" class="banner"> 
+     	<!--1--> 
+      <div type="2" style="margin-left: 0px; opacity: 1;" class="item middle"> 
+       <div class="main-text"> 
+        <div class="cont"> 
+         <h6><span class="font-arial">3</span>个月</h6> 
+         <p class="profit"><b>6.30</b><span>%</span></p> 
+        </div> 
+       </div> 
+       <div class="main-content"> 
+        <div class="bg-board"></div> 
+        <div class="back-box"> 
+         <div class="back-code ta-c"> 
+          <img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/banner_code.png" alt="扫二维码存钱" width="180" height="200" /> 
+         </div> 
+         <a act="btn_back" class="btn-back ta-c size18" href="javascript:;">返回</a> 
+        </div> 
+        <div class="details-box"> 
+         <h4 class="ta-c size24 font-bold" act="name"><span class="font-arial">3</span>个月</h4> 
+         <div class="profit">
+          <b>6.30</b>
+          <span>%</span> 
+         </div> 
+         <p class="size14 remark ta-c">历史年化收益率</p> 
+         <div class="amount size14 pr"> 
+          <div class="tip-text ta-c size12">
+           不能低于起购金额
+          </div> 
+          <span>我要存(元)</span> 
+          <div class="input-area ta-c pr"> 
+           <a href="javascript:;" act="mock_amount" class="font-bold ta-c">10000</a> 
+           <input act="txt_amount" class="font-bold hidden" maxlength="6" value="10000" type="text" /> 
+          </div> 
+         </div> 
+         <div class="bar pr mb10"> 
+          <div class="bar-bg"></div> 
+          <div style="width: 13px;" class="bar-active"></div> 
+          <div style="left: 13px;" class="bar-icon"></div> 
+         </div> 
+         <table> 
+          <tbody>
+           <tr> 
+            <th class="pr10">预计3个月可赚(元)</th> 
+            <th class="pl10">银行同期可赚(元)</th> 
+           </tr> 
+           <tr> 
+            <td class="pr10">150.09</td> 
+            <td class="pl10">39.01</td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <a class="save ta-c size18" act="btn_save" href="javascript:;">转入</a> 
+         <p class="next-times hidden"></p> 
+        </div> 
+       </div> 
+       <div class="wave"></div> 
+      </div> 
+      <!--1 end --> 
+      <div style="opacity: 1;" type="1" class="item middle"> 
+       <div class="main-text"> 
+        <div class="cont"> 
+         <h6>半月盈</h6> 
+         <p class="profit"><b>6.00</b><span>%</span></p> 
+        </div> 
+       </div> 
+       <div class="main-content"> 
+        <div class="bg-board"></div> 
+        <div class="back-box"> 
+         <div class="back-code ta-c"> 
+          <img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/banner_code.png" alt="扫二维码存钱" width="180" height="200" /> 
+         </div> 
+         <a act="btn_back" class="btn-back ta-c size18" href="javascript:;">返回</a> 
+        </div> 
+        <div class="details-box"> 
+         <h4 class="ta-c size24 font-bold" act="name">半月盈</h4> 
+         <div class="profit">
+          <b>6.00</b>
+          <span>%</span> 
+         </div> 
+         <p class="size14 remark ta-c">历史年化收益率</p> 
+         <div class="amount size14 pr"> 
+          <div class="tip-text ta-c size12">
+           不能低于起购金额
+          </div> 
+          <span>我要存(元)</span> 
+          <div class="input-area ta-c pr"> 
+           <a href="javascript:;" act="mock_amount" class="font-bold ta-c">10000</a> 
+           <input act="txt_amount" class="font-bold hidden" maxlength="6" value="10000" type="text" /> 
+          </div> 
+         </div> 
+         <div class="bar pr mb10"> 
+          <div class="bar-bg"></div> 
+          <div style="width: 13px;" class="bar-active"></div> 
+          <div style="left: 13px;" class="bar-icon"></div> 
+         </div> 
+         <table> 
+          <tbody>
+           <tr> 
+            <th class="pr10">预计15日可赚(元)</th> 
+            <th class="pl10">银行同期可赚(元)</th> 
+           </tr> 
+           <tr> 
+            <td class="pr10">23.97</td> 
+            <td class="pl10">1.44</td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <a class="save ta-c size18" act="btn_save" href="javascript:;">转入</a> 
+         <p class="next-times tips">每月<span>1</span>号<span>16</span>号免费领取</p> 
+        </div> 
+       </div> 
+       <div class="wave"></div> 
+      </div> 
+      <!--2--> 
+      <div style="opacity: 1;" type="0" class="item middle active"> 
+       <div class="main-text"> 
+        <div class="cont"> 
+         <h6>活期</h6> 
+         <p class="profit"><b>5.40</b><span>%</span></p> 
+        </div> 
+       </div> 
+       <div class="main-content"> 
+        <div class="bg-board"></div> 
+        <div class="back-box"> 
+         <div class="back-code ta-c"> 
+          <img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/banner_code.png" alt="扫二维码存钱" width="180" height="200" /> 
+         </div> 
+         <a act="btn_back" class="btn-back ta-c size18" href="javascript:;">返回</a> 
+        </div> 
+        <div class="details-box"> 
+         <h4 class="ta-c size24 font-bold" act="name">活期</h4> 
+         <div class="profit">
+          <b>5.40</b>
+          <span>%</span> 
+         </div> 
+         <p class="size14 remark ta-c">历史年化收益率</p> 
+         <div class="amount size14 pr"> 
+          <div class="tip-text ta-c size12">
+           不能低于起购金额
+          </div> 
+          <span>我要存(元)</span> 
+          <div class="input-area ta-c pr"> 
+           <a href="javascript:;" act="mock_amount" class="font-bold ta-c">10000</a> 
+           <input act="txt_amount" class="font-bold hidden" maxlength="6" value="10000" type="text" /> 
+          </div> 
+         </div> 
+         <div class="bar pr mb10"> 
+          <div class="bar-bg"></div> 
+          <div style="width: 13px;" class="bar-active"></div> 
+          <div style="left: 13px;" class="bar-icon"></div> 
+         </div> 
+         <table> 
+          <tbody>
+           <tr> 
+            <th class="pr10">预计每日可赚(元)</th> 
+            <th class="pl10">银行同期可赚(元)</th> 
+           </tr> 
+           <tr> 
+            <td class="pr10">1.44</td> 
+            <td class="pl10">0.10</td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <a class="save ta-c size18" act="btn_save" href="javascript:;">转入</a> 
+         <p class="next-times hidden"></p> 
+        </div> 
+       </div> 
+       <div class="wave"></div> 
+      </div> 
+      <!--3--> 
+      <div style="opacity: 1;" type="3" class="item middle"> 
+       <div class="main-text"> 
+        <div class="cont"> 
+         <h6><span class="font-arial">6</span>个月</h6> 
+         <p class="profit"><b>6.50</b><span>%</span></p> 
+        </div> 
+       </div> 
+       <div class="main-content"> 
+        <div class="bg-board"></div> 
+        <div class="back-box"> 
+         <div class="back-code ta-c"> 
+          <img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/banner_code.png" alt="扫二维码存钱" width="180" height="200" /> 
+         </div> 
+         <a act="btn_back" class="btn-back ta-c size18" href="javascript:;">返回</a> 
+        </div> 
+        <div class="details-box"> 
+         <h4 class="ta-c size24 font-bold" act="name"><span class="font-arial">6</span>个月</h4> 
+         <div class="profit">
+          <b>6.50</b>
+          <span>%</span> 
+         </div> 
+         <p class="size14 remark ta-c">历史年化收益率</p> 
+         <div class="amount size14 pr"> 
+          <div class="tip-text ta-c size12">
+           不能低于起购金额
+          </div> 
+          <span>我要存(元)</span> 
+          <div class="input-area ta-c pr"> 
+           <a href="javascript:;" act="mock_amount" class="font-bold ta-c">10000</a> 
+           <input act="txt_amount" class="font-bold hidden" maxlength="6" value="10000" type="text" /> 
+          </div> 
+         </div> 
+         <div class="bar pr mb10"> 
+          <div class="bar-bg"></div> 
+          <div style="width: 13px;" class="bar-active"></div> 
+          <div style="left: 13px;" class="bar-icon"></div> 
+         </div> 
+         <table> 
+          <tbody>
+           <tr> 
+            <th class="pr10">预计6个月可赚(元)</th> 
+            <th class="pl10">银行同期可赚(元)</th> 
+           </tr> 
+           <tr> 
+            <td class="pr10">315.43</td> 
+            <td class="pl10">88.77</td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <a class="save ta-c size18" act="btn_save" href="javascript:;">转入</a> 
+         <p class="next-times hidden"></p> 
+        </div> 
+       </div> 
+       <div class="wave"></div> 
+      </div> 
+      <!--4--> 
+      <div type="4" style="margin-right: 0px; opacity: 1;" class="item middle"> 
+       <div class="main-text"> 
+        <div class="cont"> 
+         <h6><span class="font-arial">1</span>年</h6> 
+         <p class="profit"><b>7.70</b><span>%</span></p> 
+        </div> 
+       </div> 
+       <div class="main-content"> 
+        <div class="bg-board"></div> 
+        <div class="back-box"> 
+         <div class="back-code ta-c"> 
+          <img src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/banner_code.png" alt="扫二维码存钱" width="180" height="200" /> 
+         </div> 
+         <a act="btn_back" class="btn-back ta-c size18" href="javascript:;">返回</a> 
+        </div> 
+        <div class="details-box"> 
+         <h4 class="ta-c size24 font-bold" act="name"><span class="font-arial">1</span>年</h4> 
+         <div class="profit">
+          <b>7.70</b>
+          <span>%</span> 
+         </div> 
+         <p class="size14 remark ta-c">历史年化收益率</p> 
+         <div class="amount size14 pr"> 
+          <div class="tip-text ta-c size12">
+           不能低于起购金额
+          </div> 
+          <span>我要存(元)</span> 
+          <div class="input-area ta-c pr"> 
+           <a href="javascript:;" act="mock_amount" class="font-bold ta-c">10000</a> 
+           <input act="txt_amount" class="font-bold hidden" maxlength="6" value="10000" type="text" /> 
+          </div> 
+         </div> 
+         <div class="bar pr mb10"> 
+          <div class="bar-bg"></div> 
+          <div style="width: 13px;" class="bar-active"></div> 
+          <div style="left: 13px;" class="bar-icon"></div> 
+         </div> 
+         <table> 
+          <tbody>
+           <tr> 
+            <th class="pr10">预计1年可赚(元)</th> 
+            <th class="pl10">银行同期可赚(元)</th> 
+           </tr> 
+           <tr> 
+            <td class="pr10">770.00</td> 
+            <td class="pl10">200.00</td> 
+           </tr> 
+          </tbody>
+         </table> 
+         <a class="save ta-c size18" act="btn_save" href="javascript:;">转入</a> 
+         <p class="next-times hidden"></p> 
+        </div> 
+       </div> 
+       <div class="wave"></div> 
+      </div> 
+      <!--circle end--> 
+     </div> 
+     <div class="arrow-box"> 
+      <div class="arrows"> 
+       <a class="left-arrow"></a> 
+       <a class="right-arrow"></a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> <!-- animation end--> 
+   
+   
+   <!-- 小白理财的优势 --> 
+   <div class="section2"> 
+    <div class="main-box"> 
+     <h3 class="size36 font-bold ta-c line-green">小白理财优势</h3> 
+     <ul> 
+      <li class="first"> 
+       <div class="fea-icon opacity1"> 
+        <div class="fea1"></div> 
+       </div> 
+       <div class="fea-desc fea-descAnimate"> 
+        <h4 class="size24">简单</h4> 
+        <p>无需掌握专业理财知识，只需根据不同期限选择合适自己的产品即可。</p> 
+       </div> </li> 
+      <li> 
+       <div class="fea-icon opacity1"> 
+        <div class="fea2"></div> 
+       </div> 
+       <div class="fea-desc fea-descAnimate"> 
+        <h4 class="size24">安全</h4> 
+        <p>作为领先的互联网金融服务平台，我们拥有专业的团队和技术系统保证安全。</p> 
+       </div> </li> 
+      <li> 
+       <div class="fea-icon opacity1"> 
+        <div class="fea3"></div> 
+       </div> 
+       <div class="fea-desc fea-descAnimate"> 
+        <h4 class="size24">稳定</h4> 
+        <p>推荐的都是低风险产品，根据以往投资历史来看收益稳定，得到了众多用户的好评。</p> 
+       </div> </li> 
+      <li class="last"> 
+       <div class="fea-icon opacity1"> 
+        <div class="fea4"></div> 
+       </div> 
+       <div class="fea-desc fea-descAnimate"> 
+        <h4 class="size24">收益高</h4> 
+        <p>收益远高于银行同期存款利息，收益提前看见。不同期限选择满足您的投资需求。</p> 
+       </div> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <!-- /小白理财的优势 --> 
+   <!-- 扫码下载 --> 
+   <div class="section4"> 
+    <div class="main-box"> 
+     <div class="left"> 
+      <h3 class="white font-bold size36 ta-c line-white">随时理财随时赚钱</h3> 
+      <p class="desc size14 ta-c white">扫码下载京东金融APP/关注京东小白理财微信服务号</p> 
+      <div class="btn-box"> 
+       <div class="jr-app white btn-app"> 
+        <a href="javascript:;">京东金融APP</a> 
+        <span></span> 
+       </div> 
+       <div class="jr-wx white btn-wx"> 
+        <a href="javascript:;">小白理财微信</a> 
+        <span></span> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="right phoneUpIn"> 
+      <div class="details-app"> 
+       <div class="tip tipRotate"> 
+        <img class="code" src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/app_code.png" alt="金融app二维码" /> 
+       </div> 
+      </div> 
+      <div class="details-wx"> 
+       <div class="tip"> 
+        <img class="code" src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/wx_code.png" alt="小白理财微信二维码" /> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- /扫码下载 --> 
+   <!-- 小白理财常见问题 --> 
+   <div class="section3"> 
+    <div class="main-box"> 
+     <h3 class="size36 font-bold ta-c line-green">小白理财常见问题</h3> 
+     <div class="question-list"> 
+      <ul class="list"> 
+       <li class="phoneUpIn"> <h4>什么是小白理财？</h4> <p>小白理财是京东金融推出的一款面向小白用户的理财工具。都是我们为您精选最稳定高收益的产品，用户无需掌握专业的理财知识，只需根据不同期限选择适合自己的产品即可。</p> </li> 
+       <li class="phoneUpIn"> <h4>小白理财安全吗？</h4> <p>京东金融作为一个一线的互联网金融服务平台，我们为千万用户提供投资理财服务，我们拥有专业的团队和技术系统保证用户资金的安全。</p> </li> 
+       <li class="phoneUpIn"> <h4>小白理财里售卖的是什么产品？</h4> <p>小白理财的产品都是经过我们精心挑选的，在京东金融平台上售卖的低风险产品。包括保险理财、货币基金、小银票和非标理财等。</p> </li> 
+       <li class="phoneUpIn"> <h4>为什么有些产品需要填写购买人信息？</h4> <p>部分产品是保险理财产品，根据法规政策要求，保险理财产品需要填写购买人的信息。</p> </li> 
+       <li class="phoneUpIn"> <h4>到期前可以取出吗？取出多久到账？</h4> <p>目前售卖的产品到期前可以取出，但会产生一定的手续费，到期后可以随时手动取出，没有手续费，一般需要2-5个工作日到账。</p> </li> 
+      </ul> 
+      <ul class="list last"> 
+       <li class="phoneUpIn"> <h4>小白理财保本吗？</h4> <p>小白理财售卖的都是低风险的产品，根据以往投资历史来看，收益稳定，没有出现过亏损的情况。 </p> </li> 
+       <li class="phoneUpIn"> <h4>小白理财有哪些优势？</h4> <p>门槛低，无需掌握复杂的专业理财知识；收益远高于银行存款利息；不同期限选择，满足您的投资需求。</p> </li> 
+       <li class="phoneUpIn"> <h4>小白理财中显示的预计收益准确吗？</h4> <p>年化收益率每日会有波动，收益也会随之波动。预期收益仅作为参考，请以实际到账收益为准。</p> </li> 
+       <li class="phoneUpIn"> <h4>购买成功后什么时候开始产生收益？</h4> <p>根据购买产品的不同，会有所不同，一般是购买成功后第二个工作日开始计算收益，第三天可以查看到账的收益（基金理财产品非工作日不确认</p> </li> 
+       <li class="phoneUpIn"> <h4>支持哪些银行卡购买？</h4> <p>不同的产品支持的银行卡不同，您可以在支付时添加银行卡和查看支持的银行。 </p> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- /小白理财常见问题 --> 
+  </div> 
+  <!--container end--> 
+  <style>
+       #tooltip_info{
+                position: absolute;
+                background-color: #eee;
+                border: 1px solid #999;
+                width: 200px;
+                height: 18px;
+                -webkit-border-radius: 8px;
+                font-family: "微软雅黑";
+                padding: 10px;
+                z-index:999;
+        }
+</style> 
+  <script src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/a.js"></script> 
+  <script type="text/javascript">
+    // 后台生成banner icon数据，目前只支持四个或五个！！！
+    var pageData = [{"bank":"0.35","days":"1","desc":"预计每日可赚(元)","isEmpty":"false","name":"活期","rate":"5.40","remark":"","tips":""},{"bank":"0.35","days":"15","desc":"预计15日可赚(元)","isEmpty":"false","name":"半月盈","rate":"6.0","remark":"","tips":"每月<span>1</span>号<span>16</span>号免费领取"},{"bank":"1.6","days":"89","desc":"预计3个月可赚(元)","isEmpty":"false","name":"3个月","rate":"6.3","remark":"","tips":""},{"bank":"1.8","days":"180","desc":"预计6个月可赚(元)","isEmpty":"false","name":"6个月","rate":"6.5","remark":"","tips":""},{"bank":"2","days":"365","desc":"预计1年可赚(元)","isEmpty":"false","name":"1年","rate":"7.70","remark":"","tips":""}];
+</script> 
+  <script type="text/javascript" src="%E6%88%91%E7%9A%84%E5%B0%8F%E7%99%BD%E7%90%86%E8%B4%A2%20-%20%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D_files/main.js"></script> 
+  <script type="text/javascript">
+
+
+    //资产总览
+    var google_tag_params = {
+        dynx_itemid:[''],
+        dynx_prodtype:['my_jrb_trade'],
+        dynx_pagetype:['category'],
+        dynx_usertype:['']
+    };
+    var conversion_value =null;
+</script> 
+  <script type="text/javascript">
+    dataLayer = [{'google_tag_params': window.google_tag_params,"conversion_value":window.conversion_value}];
+</script> 
+  <!-- Google Tag Manager --> 
+  <noscript>
+   <iframe src="//www.googletagmanager.com/ns.html?id=GTM-W9HSZR" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript> 
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W9HSZR');</script> 
+  <!-- End Google Tag Manager --> 
+  <script type="text/javascript">
+(function($){
+
+    
+})(jQuery);
+</script> 
+  <!--footer-->
+  <div class="f-copyright"> 
+   <div class="grid-1200 footerHolder"> 
+    <div class="footer-nav"> 
+     <p> <a href="http://help.jr.jd.com/show/helpcenter/110.html" target="_blank" clstag="jr|keycount|jr_shouye|footer1">关于京东金融</a><span class="footer-nav-cut">|</span> <a href="http://help.jr.jd.com/show/helpcenter/113.html" target="_blank" clstag="jr|keycount|jr_shouye|footer2">关于京东小金库</a><span class="footer-nav-cut">|</span> <a href="http://help.jr.jd.com/show/helpcenter/133.html" target="_blank" clstag="jr|keycount|jr_shouye|footer3">关于京东钱包</a><span class="footer-nav-cut">|</span> <a href="http://help.jr.jd.com/show/helpcenter/148.html" target="_blank">关于京东白条</a> <span class="footer-nav-cut">|</span> <a href="http://help.jr.jd.com/show/helpcenter/139.html" target="_blank" clstag="jr|keycount|jr_shouye|footer4">联系我们</a><span class="footer-nav-cut">|</span> <a href="http://help.jr.jd.com/show/helpcenter/117.html" target="_blank" clstag="jr|keycount|jr_shouye|footer5">免责声明</a> </p> 
+     <p>Copyright &copy; 2004-2015 京东JD.com 版权所有<span class="footer-nav-cut">|</span>投资有风险，购买需谨慎</p> 
+    </div> 
+    <div class="footer-contact"> 
+     <div class="f-contact-time">
+      联系我们
+      <span>（9:00-22:00）</span>
+     </div> 
+     <div class="f-contact-way"> 
+      <span class="f-contact-tel">400 098 8511</span> 
+      <span class="f-contact-type">(个人业务)</span> 
+      <a class="f-contact-ol online" href="http://chat.jd.com/jd/chat?entry=jd_jr" target="_blank" clstag="jr|keycount|jr_shouye|footerkf">在线客服</a> 
+      <a class="f-contact-ol f-contact-mail" target="_blank" href="http://jr.jd.com/mail/index.html" clstag="jr|keycount|jr_shouye|footerkfmail">客服邮箱</a> 
+     </div> 
+     <div class="f-contact-way"> 
+      <span class="f-contact-tel">400 088 8816</span> 
+      <span class="f-contact-type">(企业业务)</span> 
+     </div> 
+    </div> 
+   </div>
+  </div>
+  <!--footer end--> 
+  <!-- footer end --> 
+  <script type="text/javascript">
+    var jaq = jaq || [];
+    jaq.push(['account','UA-J2011-12']);
+    jaq.push(['domain','trade.jr.jd.com']);
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://cscssl' : 'http://csc') + '.jd.com/joya.js';
+        var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ja,s);
+    })();
+</script> 
+  <script type="text/javascript">
+    var jaq = jaq || [];
+    jaq.push(['account','UA-J2011-12']);
+    jaq.push(['domain','jr.jd.com']);
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://click' : 'http://click') + '.jr.jd.com/wl.dev.js';
+        var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ja,s);
+    })();
+</script> 
+  <div class="ui-sidebar">
+   <a class="ui-sidebar-block app" href="http://m.jr.jd.com/helppage/downApp/jrAppPromote.html" target="_blank"><i></i></a>
+   <a class="ui-sidebar-block feedback" href="http://ur.jr.jd.com/survey/show?id=131&amp;u=http%3A%2F%2Ftrade.jr.jd.com%2Fxiaobai%2Fmain.action" target="_blank"></a>
+   <a class="ui-sidebar-block jrQA" href="http://club.jr.jd.com/licai/jingxuan" target="_blank"></a>
+   <a style="display: block;" class="ui-sidebar-block backtop" href="javascript:void(0)"></a>
+  </div>
+ </body>
+</html>
