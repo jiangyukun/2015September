@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+    <title>按钮动画</title>
+    <style>
+        .fr {
+            float: right;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        /*按钮上的字母跳动动画  //start*/
+        .button {
+            padding: 8px 2em;
+            background: #333333;
+            color: #fff;
+            font-size: 28px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .button > span, .button_waven > span {
+            display: inline-block;
+            padding: 1em 6px;
+            font-size: 38px;
+        }
+
+        .button > span:nth-child(odd) {
+            animation: an1 0.5s forwards;
+        }
+
+        .button > span:nth-child(even) {
+            animation: an2 0.5s forwards;
+        }
+
+        .button > span:nth-child(odd), .button > span:nth-child(even) {
+            transition-animation-function: cubic-bezier(0.75, 1, 0.125, 1);
+        }
+
+        .button > span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .button > span:nth-child(2) {
+            animation-delay: 0.05s;
+        }
+
+        .button > span:nth-child(3) {
+            animation-delay: 0.10s;
+        }
+
+        .button > span:nth-child(4) {
+            animation-delay: 0.15s;
+        }
+
+        .button > span:nth-child(5) {
+            animation-delay: 0.20s;
+        }
+
+        .button > span:nth-child(6) {
+            animation-delay: 0.25s;
+        }
+
+        .button > span:nth-child(7) {
+            animation-delay: 0.30s;
+        }
+
+        .button > span:nth-child(8) {
+            animation-delay: 0.35s;
+        }
+
+        .button > span:nth-child(9) {
+            animation-delay: 0.4s;
+        }
+
+        .button > span:nth-child(10) {
+            animation-delay: 0.45s;
+        }
+
+        .button > span:nth-child(11) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes an1 {
+            0%, 100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+            49% {
+                opacity: 1;
+                transform: translate3d(0, 100%, 0);
+            }
+            50% {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+            }
+            51% {
+                opacity: 1;
+                transform: translate3d(0, -100%, 0);
+            }
+        }
+
+        @keyframes an2 {
+            0%, 100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+            49% {
+                opacity: 1;
+                transform: translate3d(0, -100%, 0);
+            }
+            50% {
+                opacity: 0;
+                transform: translate3d(0, -100%, 0);
+            }
+            51% {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+            }
+        }
+
+        /*按钮上的字母跳动动画  //end*/
+
+        /*边框线的环绕动画//start*/
+        .bb, .bb::before, .bb::after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .bb {
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            background: #333;
+            color: #69ca62;
+            /*div=220*220px*/
+            box-shadow: inset 0 0 0 1px rgba(105, 202, 98, 0.5);
+            /*inset边框为在内的1px*/
+        }
+
+        .bb::before, .bb::after {
+            content: ''; /*内容为空*/
+            z-index: -1;
+            margin: -5%;
+            box-shadow: inset 0 0 0 5px;
+            /*margin:(20-5%*200)px;w*h=220*220px 5px宽边*/
+            animation: clipMe 8s linear infinite;
+        }
+
+        .bb::before {
+            animation-delay: -4s;
+        }
+
+        .bb:hover::after, .bb:hover::before {
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+
+        @keyframes clipMe {
+            0%, 100% {
+                clip: rect(0px, 220.0px, 2px, 0px);
+                /*clip是CSS2中的裁切属性top right bottom left 四刀切 中间的是可见的*/
+            }
+            25% {
+                clip: rect(0px, 2px, 220.0px, 0px);
+            }
+            50% {
+                clip: rect(218.0px, 220.0px, 220.0px, 0px);
+            }
+            75% {
+                clip: rect(0px, 220.0px, 220.0px, 218.0px);
+            }
+        }
+
+        /*边框线的环绕动画//end*/
+
+        /*波纹 、声呐效果 //start*/
+        /*波纹 、声呐的基本样式//start*/
+        .item {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            float: left;
+            display: inline-block;
+            margin: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            *opacity: 1;
+            *filter: alpha(opacity=100);
+        }
+
+        .item .main-text {
+            position: absolute;
+            background-image: url(circle_middle.png);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 180px;
+            height: 180px;
+            left: 50%;
+            margin-left: -90px;
+            top: 50%;
+            margin-top: -90px;
+        }
+
+        .item h6 {
+            font-weight: bold;
+            font-size: 18px;
+            padding-bottom: 14px;
+            padding-top: 4px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .item .profit {
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 48px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .item .profit span {
+            font-size: 24px;
+        }
+
+        .item .cont {
+            position: relative;
+            color: #323232;
+            margin: auto;
+            position: absolute;
+            width: 170px;
+            *width: 88px;
+            height: 84px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+        }
+
+        .wave {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            z-index: -1; /*图层显示等级降低*/
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1); /*水平偏移值   垂直偏移值   阴影边框   模糊值   阴影颜色*/
+            opacity: 0;
+            filter: alpha(opacity=0); /*兼容IE的透明度*/
+            pointer-events: none; /*将wave的图层操作关闭，鼠标可操作wave上面的图层main-text；如果也想操作wave里的图层，给里面的元素重新设置为 pointer-events:auto；*/
+            border-radius: 50%; /*倒角成园*/
+            box-sizing: content-box; /*盒子的宽度以内容的宽度计算*/
+            transform: scale(0.9); /*缩小0.9倍*/
+        }
+
+        /*波纹 、声呐的基本样式//end*/
+        /*波纹 、声呐的动画样式//start*/
+        .item:hover .main-content {
+            display: block;
+        }
+
+        .item:hover .wave {
+            display: block;
+            animation: sonarEffect 1.3s ease-out; /*动画的名称  播放延长的时间 播放的进度*/
+        }
+
+        @keyframes sonarEffect {
+            0% {
+                opacity: 0.3;
+            }
+            40% {
+                opacity: 0.5;
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #646464, 0 0 0 10px rgba(255, 255, 255, 0.5); /*阴影的变化*/
+            }
+            100% {
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #646464, 0 0 0 10px rgba(255, 255, 255, 0.5);
+                transform: scale(1.2); /*放大1.2倍*/
+                opacity: 0;
+            }
+        }
+
+        /*波纹 、声呐的动画样式//end*/
+        /*波纹 、声呐效果 //end*/
+    </style>
+</head>
+<body>
+<!-- 波纹 、声呐 //start -->
+<div style="opacity: 1;" type="1" class="item middle">
+    <div class="main-text">
+        <div class="cont">
+            <h6>半月盈</h6>
+
+            <p class="profit"><b>6.00</b><span>%</span></p>
+        </div>
+    </div>
+    <div class="wave"></div>
+</div>
+<!-- 波纹 、声呐 //end -->
+
+<!-- 边框线的环绕动画 //start -->
+<!-- <div class="bb"></div> --><!-- 边框线的环绕动画 //end -->
+
+<!-- 按钮上的字母跳动动画 //start -->
+<div class="fr">
+    <button class="button">
+        <span>S</span><span>e</span><span>n</span><span>d</span>
+        <span>M</span><span>a</span><span>i</span><span>l</span>
+    </button>
+</div>
+<!-- 按钮上的字母跳动动画 // -->
+
+
+</body>
+</html>
+
