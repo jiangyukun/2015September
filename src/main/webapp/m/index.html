@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../res/css/bootstrap.css">
+    <script src="../res/js/jquery.js"></script>
+    <script src="../res/js/mustache.js"></script>
+    <script src="../res/js/bootstrap.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .search_condition {
+            border: 1px dotted #aaa;
+        }
+
+        /*li {
+            background-color: #aaa;
+            list-style-type: none;
+            text-align: center;
+        }*/
+
+        .menu_nav_container {
+            position: relative;
+            margin: 50px auto;
+            width: 700px;
+        }
+
+        .left-menu {
+            width: 100px;
+        }
+
+        .sub_content {
+            position: absolute;
+            padding-top: 5px;
+            left: 100px;
+            width: 600px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+
+        dd {
+            display: inline;
+        }
+
+        .search_conditon {
+            display: inline-block;
+            background-color: #364;
+        }
+    </style>
+</head>
+<body>
+<div class="search_condition">
+    <span class="glyphicon glyphicon-plus add_condition"></span>
+    点此添加商品名称
+</div>
+<div class="menu_nav_container clearfix">
+    <div class="pull-left left-menu">
+        <ul class="list-group">
+            <li class="list-group-item" data-p="1">A</li>
+            <li class="list-group-item" data-p="2">B</li>
+            <li class="list-group-item" data-p="3">C</li>
+            <li class="list-group-item" data-p="4">D</li>
+            <li class="list-group-item" data-p="5">E</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="sub_content">
+            <dl>
+                <dt><span>A</span></dt>
+                <dd><span class="item">a1</span></dd>
+                <dd><span class="item">a2</span></dd>
+                <dd><span class="item">a3</span></dd>
+            </dl>
+        </div>
+        <div class="sub_content">
+            BBBB
+        </div>
+        <div class="sub_content">
+            CCCC
+        </div>
+        <div class="sub_content">
+            DDDD
+        </div>
+        <div class="sub_content">
+            EEEE
+        </div>
+    </div>
+</div>
+xxsdf
+<script>
+    $(function () {
+        var addCondition = $('.add_condition');
+        var $menuNavContainer = $('.menu_nav_container');
+        var templateStr = $('#template1').text();
+
+        function init() {
+            $menuNavContainer.hide();
+        }
+
+        init();
+
+        $('.add_condition').click(function () {
+            $menuNavContainer.show();
+        });
+        $('.content').find('.sub_content:not(:first)').hide();
+        $('.list-group-item').on('mouseover', function () {
+            var n = $(this).data('p') - 1;
+            $('.sub_content').each(function (index, ele) {
+                var $ele = $(ele);
+                if (index == n) {
+                    $ele.show();
+                } else {
+                    $ele.hide();
+                }
+            })
+        });
+
+        $('.sub_content .item').click(function () {
+            var html = Mustache.to_html(templateStr, {
+                text: $(this).text()
+            });
+            addCondition.before(html);
+        });
+        $('.search_condition').delegate('.search-remove', 'click', function () {
+            $(this).parent().remove();
+        });
+    });
+</script>
+
+<script id="template1" type="text/xml">
+    <div class="search_conditon">
+        <span>{{text}}</span>
+        <span class="glyphicon glyphicon-remove search-remove"></span>
+    </div>
+</script>
+</body>
+</html>
