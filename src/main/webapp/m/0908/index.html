@@ -4,80 +4,127 @@
     <meta charset="utf-8">
     <title>nav</title>
     <link rel="stylesheet" type="text/css" href="../../res/css/bootstrap.css">
-    <link href="css/basic.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="../..//res/js/jquery.js"></script>
     <script src="../../res/js/mustache.js"></script>
     <script src="../../res/js/bootstrap.js"></script>
     <script src="js/index.js"></script>
-    <style>
-        .search-container {
-            width: 1000px;
-            margin: 50px auto;
-        }
-
-        .search-condition {
-            height: 40px;
-            border: 1px dotted orange;
-        }
-
-        .btn-tip {
-            display: inline-block;
-            margin-left: 30px;
-            padding: 10px;
-        }
-
-        .addTip {
-            padding: 10px;
-            font-size: 18px;
-        }
-
-        .left-menu {
-            top: 5px;
-            position: relative;
-        }
-
-        .sub-content {
-            position: absolute;
-            padding-top: 5px;
-            top: 0;
-            left: 180px;
-            width: 600px;
-            height: 200px;
-            border: 1px solid #ccc;
-        }
-    </style>
 </head>
 <body>
 <div class="search-container">
+
     <div class="search-condition">
         <div class="btn-tip">
             <span class="glyphicon glyphicon-plus add-condition-btn"></span>
             <span class="addTip">点此添加商品名称</span>
         </div>
     </div>
-    <div class="left-menu">
+    <div class="search-menu-list">
+        <div class="close">
+            <span class="glyphicon glyphicon-remove close-btn"></span>
+        </div>
         <ul>
-            <li><A class="hover" href="#">前端交流</A></li>
-            <li><A href="#">交互设计</A></li>
-            <li><A href="#">视觉设计</A></li>
-            <li><A href="#">用户研究</A></li>
-            <li><A href="#">设计茶吧</A></li>
-            <li><A href="#">前端交流</A></li>
-            <li><A href="#">团队生活</A></li>
+            <li data-p="0"><A class="hover" href="#">手机数码</A></li>
+            <li data-p="1"><A href="#">家用电器</A></li>
+            <li data-p="2"><A href="#">电脑、办公</A></li>
+            <li data-p="3"><A href="#">家居、家具</A></li>
+            <li data-p="4"><A href="#">个户化妆</A></li>
+            <li data-p="5"><A href="#">奢侈品</A></li>
+            <li data-p="6"><A href="#">运动户外</A></li>
+            <li data-p="7"><A href="#">汽车用品</A></li>
             <div id="current"></div>
         </ul>
         <div class="content">
             <div class="sub-content">
                 <dl>
-                    <dt><span>A</span></dt>
-                    <dd><span class="item">a1</span></dd>
-                    <dd><span class="item">a2</span></dd>
-                    <dd><span class="item">a3</span></dd>
+                    <dt><span>大家电</span></dt>
+                    <dd><span id="product1" class="item">平叛电视</span></dd>
+                    <dd><span id="product2" class="item">空调</span></dd>
+                    <dd><span id="product3" class="item">冰箱</span></dd>
+                    <dd><span id="xiyiji" class="item">洗衣机</span></dd>
+                    <dd><span id="jiatingyingyuan" class="item">家庭影院</span></dd>
+                    <dd><span id="dvd" class="item">DVD</span></dd>
+                </dl>
+                <dl>
+                    <dt><span>生活电器</span></dt>
+                    <dd><span id="dianfengshan" class="item">电风扇</span></dd>
+
+                </dl>
+            </div>
+            <div class="sub-content">
+                <dl>
+                    <dt><span>B</span></dt>
+                    <dd><span id="product4" class="item">b1</span></dd>
+                    <dd><span id="product5" class="item">b2</span></dd>
+                    <dd><span id="product6" class="item">b3</span></dd>
                 </dl>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        var $searchMenuList = $('.search-menu-list');
+        var $searchCondition = $('.search-condition');
+        var $btnTip = $('.btn-tip');
+        var $closeBtn = $('.close-btn');
+        var templateStr = $('#template1').text();
+
+        $('.content').find('.sub-content:not(:first)').hide();
+        $searchMenuList.hide();
+
+        $btnTip.click(function () {
+            $searchMenuList.show();
+        });
+        $closeBtn.click(function () {
+            $searchMenuList.hide();
+        });
+        $('.search-menu-list>ul>li').on('click', function () {
+            var n = $(this).data('p');
+            $('.sub-content').each(function (index, ele) {
+                var $ele = $(ele);
+                if (index == n) {
+                    $ele.show();
+                } else {
+                    $ele.hide();
+                }
+            })
+        });
+        $('.sub-content .item').click(function () {
+            var isExist;
+            var id = $(this).attr('id');
+            $searchCondition.find('span[data-id]').each(function (index, element) {
+                var $ele = $(element);
+                if (id == $ele.data('id')) {
+                    isExist = true;
+                    return true;
+                }
+            });
+            if (isExist) {
+                return;
+            }
+            var html = Mustache.to_html(templateStr, {
+                id: id,
+                text: $(this).text()
+            });
+            $btnTip.before(html);
+            $(this).addClass('selected');
+        });
+        $searchCondition.delegate('.search-remove', 'click', function () {
+            var id = $(this).prev().data('id');
+            $('#' + id).removeClass('selected');
+            $(this).parent().remove();
+        });
+    });
+
+</script>
+
+<script id="template1" type="text/xml">
+    <div class="search-condition-item">
+        <span data-id="{{id}}">{{text}}</span>
+        <span class="glyphicon glyphicon-remove search-remove"> </span>
+    </div>
+</script>
 </body>
 </html>
