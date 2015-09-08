@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="../res/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="0908/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="0908/css/style.css">
     <script src="../res/js/jquery.js"></script>
     <script src="../res/js/mustache.js"></script>
     <script src="../res/js/bootstrap.js"></script>
+    <script src="0908/js/index.js"></script>
     <style>
         * {
             margin: 0;
@@ -14,30 +17,44 @@
             box-sizing: border-box;
         }
 
-        .search_condition {
-            border: 1px dotted #aaa;
+        .search-container {
+            width: 1000px;
+            margin: 50px auto;
         }
 
-        /*li {
-            background-color: #aaa;
-            list-style-type: none;
-            text-align: center;
-        }*/
+        .search-condition {
+            height: 40px;
+            border: 1px dotted orange;
+        }
 
-        .menu_nav_container {
+        .btn-tip {
+            display: inline-block;
+            margin-left: 30px;
+            padding: 10px;
+        }
+
+        .addTip {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .menu-nav-container {
             position: relative;
-            margin: 50px auto;
             width: 700px;
         }
 
         .left-menu {
-            width: 100px;
+            position: absolute;
         }
 
-        .sub_content {
+        .left-menu-item {
+            background-color: orange;
+        }
+
+        .sub-content {
             position: absolute;
             padding-top: 5px;
-            left: 100px;
+            left: 180px;
             width: 600px;
             height: 200px;
             border: 1px solid #ccc;
@@ -47,55 +64,68 @@
             display: inline;
         }
 
-        .search_conditon {
+        .search-condition-item {
             display: inline-block;
             background-color: #364;
         }
     </style>
 </head>
 <body>
-<div class="search_condition">
-    <span class="glyphicon glyphicon-plus add_condition"></span>
-    点此添加商品名称
-</div>
-<div class="menu_nav_container clearfix">
-    <div class="pull-left left-menu">
-        <ul class="list-group">
-            <li class="list-group-item" data-p="1">A</li>
-            <li class="list-group-item" data-p="2">B</li>
-            <li class="list-group-item" data-p="3">C</li>
-            <li class="list-group-item" data-p="4">D</li>
-            <li class="list-group-item" data-p="5">E</li>
-        </ul>
-    </div>
-    <div class="content">
-        <div class="sub_content">
-            <dl>
-                <dt><span>A</span></dt>
-                <dd><span class="item">a1</span></dd>
-                <dd><span class="item">a2</span></dd>
-                <dd><span class="item">a3</span></dd>
-            </dl>
-        </div>
-        <div class="sub_content">
-            BBBB
-        </div>
-        <div class="sub_content">
-            CCCC
-        </div>
-        <div class="sub_content">
-            DDDD
-        </div>
-        <div class="sub_content">
-            EEEE
+<div class="search-container">
+
+    <div class="search-condition">
+        <div class="btn-tip">
+            <span class="glyphicon glyphicon-plus add-condition-btn"></span>
+            <span class="addTip">点此添加商品名称</span>
         </div>
     </div>
+
+    <div class="menu-nav-container clearfix">
+        <div class="close">
+            <span class="glyphicon glyphicon-remove"></span>
+        </div>
+        <div class="left-menu">
+            <ul>
+                <li><A class="hover" href="#">前端交流</A></li>
+                <li><A href="#">交互设计</A></li>
+                <li><A href="#">视觉设计</A></li>
+                <li><A href="#">用户研究</A></li>
+                <li><A href="#">设计茶吧</A></li>
+                <li><A href="#">前端交流</A></li>
+                <li><A href="#">团队生活</A></li>
+                <div id="current"></div>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="sub-content">
+                <dl>
+                    <dt><span>A</span></dt>
+                    <dd><span class="item">a1</span></dd>
+                    <dd><span class="item">a2</span></dd>
+                    <dd><span class="item">a3</span></dd>
+                </dl>
+            </div>
+            <div class="sub-content">
+                BBBB
+            </div>
+            <div class="sub-content">
+                CCCC
+            </div>
+            <div class="sub-content">
+                DDDD
+            </div>
+            <div class="sub-content">
+                EEEE
+            </div>
+        </div>
+    </div>
 </div>
-xxsdf
 <script>
     $(function () {
-        var addCondition = $('.add_condition');
-        var $menuNavContainer = $('.menu_nav_container');
+        var addCondition = $('.add-condition-btn');
+        var $menuNavContainer = $('.menu-nav-container');
+        var $searchCondition = $('.search-condition');
+        var $btnTip = $('.btn-tip');
         var templateStr = $('#template1').text();
 
         function init() {
@@ -104,13 +134,13 @@ xxsdf
 
         init();
 
-        $('.add_condition').click(function () {
+        addCondition.click(function () {
             $menuNavContainer.show();
         });
-        $('.content').find('.sub_content:not(:first)').hide();
+        $('.content').find('.sub-content:not(:first)').hide();
         $('.list-group-item').on('mouseover', function () {
             var n = $(this).data('p') - 1;
-            $('.sub_content').each(function (index, ele) {
+            $('.sub-content').each(function (index, ele) {
                 var $ele = $(ele);
                 if (index == n) {
                     $ele.show();
@@ -120,20 +150,20 @@ xxsdf
             })
         });
 
-        $('.sub_content .item').click(function () {
+        $('.sub-content .item').click(function () {
             var html = Mustache.to_html(templateStr, {
                 text: $(this).text()
             });
-            addCondition.before(html);
+            $btnTip.before(html);
         });
-        $('.search_condition').delegate('.search-remove', 'click', function () {
+        $searchCondition.delegate('.search-remove', 'click', function () {
             $(this).parent().remove();
         });
     });
 </script>
 
 <script id="template1" type="text/xml">
-    <div class="search_conditon">
+    <div class="search-condition-item">
         <span>{{text}}</span>
         <span class="glyphicon glyphicon-remove search-remove"></span>
     </div>

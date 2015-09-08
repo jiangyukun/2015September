@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>nav</title>
+    <link rel="stylesheet" type="text/css" href="../../res/css/bootstrap.css">
+    <link href="css/basic.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="../..//res/js/jquery.js"></script>
+    <script src="../../res/js/mustache.js"></script>
+    <script src="../../res/js/bootstrap.js"></script>
+    <script src="js/index.js"></script>
+    <style>
+        .search-container {
+            width: 1000px;
+            margin: 50px auto;
+        }
+
+        .search-condition {
+            height: 40px;
+            border: 1px dotted orange;
+        }
+
+        .btn-tip {
+            display: inline-block;
+            margin-left: 30px;
+            padding: 10px;
+        }
+
+        .addTip {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .left-menu {
+            top: 5px;
+            position: relative;
+        }
+
+        .sub-content {
+            position: absolute;
+            padding-top: 5px;
+            top: 0;
+            left: 180px;
+            width: 600px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="search-container">
+    <div class="search-condition">
+        <div class="btn-tip">
+            <span class="glyphicon glyphicon-plus add-condition-btn"></span>
+            <span class="addTip">点此添加商品名称</span>
+        </div>
+    </div>
+    <div class="left-menu">
+        <ul>
+            <li><A class="hover" href="#">前端交流</A></li>
+            <li><A href="#">交互设计</A></li>
+            <li><A href="#">视觉设计</A></li>
+            <li><A href="#">用户研究</A></li>
+            <li><A href="#">设计茶吧</A></li>
+            <li><A href="#">前端交流</A></li>
+            <li><A href="#">团队生活</A></li>
+            <div id="current"></div>
+        </ul>
+        <div class="content">
+            <div class="sub-content">
+                <dl>
+                    <dt><span>A</span></dt>
+                    <dd><span class="item">a1</span></dd>
+                    <dd><span class="item">a2</span></dd>
+                    <dd><span class="item">a3</span></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
