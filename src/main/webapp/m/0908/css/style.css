@@ -103,6 +103,7 @@ ul li a.hover {
     right: 0;
     width: 25px;
     height: 25px;
+    z-index: 10;
 }
 
 dl {
@@ -152,23 +153,24 @@ dd {
 }
 
 .plus {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     margin-top: -5px;
 }
 
 .close-btn, .remove-btn {
-    margin: 4px;
-    width: 17px;
-    height: 17px;
+    margin: 2px;
     transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     -o-transform: rotate(45deg);
 }
-
-.remove-btn {
+.close-btn {
     width: 15px;
     height: 15px;
+}
+.remove-btn {
+    width: 14px;
+    height: 14px;
 }
