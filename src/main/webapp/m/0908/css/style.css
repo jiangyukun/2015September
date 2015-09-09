@@ -1,10 +1,17 @@
 @charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     font-size: 62.5%; /* 10÷16=62.5% */
 }
 
 body {
-    font-size: 1.2rem;
+    /*font-size: 1.2rem;*/
     background: #F8F8F8;
     line-height: 1;
 }
@@ -53,12 +60,6 @@ ul li a.hover {
     transition: top .2s;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .search-container {
     width: 1000px;
     margin: 50px auto;
@@ -96,8 +97,12 @@ ul li a.hover {
     width: 820px;
 }
 
-.close-btn {
-    font-size: 15px;
+.close-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
 }
 
 dl {
@@ -118,7 +123,7 @@ dd {
     font-size: 14px;
 }
 
-.item, .search-remove, .close, .close-btn {
+.item, .search-remove, .close-container {
     cursor: pointer;
 }
 
@@ -136,4 +141,34 @@ dd {
 .selected {
     color: green;
     cursor: auto;
+}
+
+.not-selected {
+    cursor: auto;
+}
+
+.img {
+
+}
+
+.plus {
+    width: 18px;
+    height: 18px;
+    margin-top: -5px;
+}
+
+.close-btn, .remove-btn {
+    margin: 4px;
+    width: 17px;
+    height: 17px;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+.remove-btn {
+    width: 15px;
+    height: 15px;
 }
