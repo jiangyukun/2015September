@@ -36,6 +36,19 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0908/js/refactoring/SmallCategory.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0909/index.html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0909/style2.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/images/bg-input-focus.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/images/bg-input.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/images/cancel.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/images/plus.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/images/sprite.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/js/AllProduct.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/js/BigCategory.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/js/Item.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/js/SmallCategory.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/js/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/product_select.html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/php/list.blade.php" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/res/css/bootstrap-theme.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/res/css/bootstrap-theme.css.map" charset="GBK" />
