@@ -1,19 +1,22 @@
-function SearchBox($searchContainer, $productSelectContainer) {
-    this.$searchContainer = $searchContainer;
-    this.$productSelectContainer = $productSelectContainer;
-    this.$addArea = this.$searchContainer.find('.btn-tip');
+function SearchBox($container) {
+    this.$container = $container;
+    this.$addArea = this.$container.find('.btn-tip');
     this.$itemList = [];
     this.itemAddedListener = [];
     this.itemRemovedListener = [];
+    this.addAreaClickedListener = [];
+    this._searchItemTemplate = _.template($('#template1').text());
     this.init();
 }
 
 SearchBox.prototype = {
     constructor: SearchBox,
     init: function () {
-        var self = this;
+        var i, self = this;
         this.$addArea.click(function () {
-            self.$productSelectContainer.show();
+            for (i = 0; i < self.addAreaClickedListener.length; i++) {
+                self.addAreaClickedListener[i]();
+            }
         });
     },
     registerListener: function (type, listener) {
@@ -21,21 +24,15 @@ SearchBox.prototype = {
             this.itemAddedListener.push(listener);
         } else if (type == 'remove') {
             this.itemRemovedListener.push(listener);
+        } else if (type == 'addAreaClick') {
+            this.addAreaClickedListener.push(listener);
         }
     },
-    triggerRemove: function (id) {
-        var i, listener;
-        for (i = 0; i < this.itemRemovedListener.length; i++) {
-            listener = this.itemRemovedListener[i];
-            if (typeof listener === 'function') {
-                listener(id);
-            }
-        }
-    },
-    addSearchItem: function (id, htmlStr) {
+    addSearchItem: function (id, text) {
         var i, self = this;
+        var htmlStr = this._searchItemTemplate({id: id, text: text});
         this.$addArea.before(htmlStr);
-        var $item = this.$searchContainer.find('span[data-id=' + id + ']').parent();
+        var $item = this.$container.find('span[data-id=' + id + ']').parent();
         this.$itemList.push($item);
         $item.find('.remove-btn').click(function () {
             self.deleteSearchItem($(this).prev().data('id'));
@@ -48,11 +45,16 @@ SearchBox.prototype = {
         }
     },
     deleteSearchItem: function (id) {
-        var i, $item;
+        var i, j, $item, listener;
         for (i = 0; i < this.$itemList.length; i++) {
             $item = this.$itemList[i];
             if ($item.find('span').data('id') == id) {
-                this.triggerRemove(id);
+                for (j = 0; j < this.itemRemovedListener.length; j++) {
+                    listener = this.itemRemovedListener[j];
+                    if (typeof listener === 'function') {
+                        listener(id);
+                    }
+                }
                 $item.remove();
                 this.$itemList = this.$itemList.slice(0, i).concat(this.$itemList.slice(i + 1, this.$itemList.length));
             }
@@ -62,7 +64,7 @@ SearchBox.prototype = {
         var i, $item;
         for (i = 0; i < this.$itemList.length; i++) {
             $item = this.$itemList[i];
-            if ($item.find('span').data('id')== id) {
+            if ($item.find('span').data('id') == id) {
                 return true;
             }
         }

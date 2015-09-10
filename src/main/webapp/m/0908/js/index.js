@@ -19,6 +19,10 @@ $(function () {
     })
 });
 
+_.templateSettings = {
+    interpolate: /\[\[(.+?)\]\]/g
+};
+
 $(function () {
     var $searchMenuList = $('.search-menu-list');
     var $searchCondition = $('.search-condition');
@@ -26,7 +30,7 @@ $(function () {
     var $closeContainer = $('.close-container');
     var $categoryMenuList = $('#category_menu_list');
     var $subContent = $('.sub-content');
-    var templateStr = $('#template1').text();
+    var _template = _.template($('#template1').text());
 
     // init
     $('input[type=radio]').uniform();
@@ -42,6 +46,7 @@ $(function () {
     });
     $subContent.find('.select-all').click(function () {
         var n = 0, $currentSubContent = $(this).closest('.sub-content');
+        // 查找删除
         $currentSubContent.find('span.item').each(function (index, element) {
             var itemId = $(element).attr('id');
             var $removeItem = $searchCondition.find('span[data-id="' + itemId + '"]');
@@ -59,7 +64,7 @@ $(function () {
         if ($searchCondition.find('span[data-id="' + $categoryMenuA.attr('id') + '"]').length != 0) {
             return;
         }
-        var html = Mustache.to_html(templateStr, {
+        var html = _template({
             id: $categoryMenuA.attr('id'),
             text: $categoryMenuA.text()
         });
@@ -103,6 +108,7 @@ $(function () {
         }
 
         var $dl = $(this).parent().parent();
+        // 删除
         if ($(this).parent().is('dt')) {
             $dl.find('dd').each(function (index, element) {
                 var removeId = $(element).find('span').attr('id');
@@ -117,13 +123,14 @@ $(function () {
                 return;
             }
         }
-        var html = Mustache.to_html(templateStr, {
+        var html = _template({
             id: id,
             text: $(this).text()
         });
         $btnTip.before(html);
         $(this).addClass('selected');
     });
+    // 删除按钮
     $searchCondition.delegate('.remove-btn', 'click', function () {
         var id = $(this).prev().data('id');
         var $ele = $('#' + id);

@@ -19,15 +19,16 @@ $(function () {
     })
 });
 
+_.templateSettings = {
+    interpolate: /\[\[(.+?)]]/g
+};
 
 $(function () {
     var $searchCondition = $('.search-condition');
     var $searchMenuList = $('.search-menu-list');
-    var $categoryMenuList = $('#category_menu_list');
-    var templateStr = $('#template1').text();
 
-    function ProductSelectBox($productSelectContainer, searchBox) {
-        this.$productSelectContainer = $productSelectContainer;
+    function ProductSelectBox($container, searchBox) {
+        this.$container = $container;
         this.searchBox = searchBox;
         this.init();
     }
@@ -36,22 +37,31 @@ $(function () {
         constructor: ProductSelectBox,
         init: function () {
             var self = this;
-            this.$productSelectContainer.hide();
-            self.searchBox.registerListener('add', function (id) {
+            this.searchBox.registerListener('add', function (id) {
                 $('#' + id).addClass('selected');
             });
-            self.searchBox.registerListener('remove', function (id) {
-                $('#' + id).removeClass('selected');
+            this.searchBox.registerListener('addAreaClick', function () {
+                self.$container.show();
             });
-            this.$productSelectContainer.find('.close-container').click(function () {
-                self.$productSelectContainer.hide();
+            this.searchBox.registerListener('remove', function (id) {
+                var $correspondItem = $('#' + id);
+                if ($correspondItem.is('span')) {
+                    $correspondItem.removeClass('selected');
+                } else if ($correspondItem.is('a')) {
+                    $('#' + id + '_all').parent().removeClass('checked');
+                }
             });
-            this.$productSelectContainer.find('input[type=radio]').uniform();
-            this.$productSelectContainer.find('.content').find('.sub-content:not(:first)').hide();
+            this.$container.find('.close-container').click(function () {
+                self.$container.hide();
+            });
+            this.$container.find('input[type=radio]').uniform();
+            this.$container.find('.content').find('.sub-content:not(:first)').hide();
+            this.productCategoryId = this.$container.find('ul li:first a').attr('id');
             // 左侧大分类
-            this.$productSelectContainer.find('ul li').click(function () {
+            this.$container.find('ul li').click(function () {
                 var n = 0;
                 var $current = $(this);
+                self.productCategoryId = $current.find('a').attr('id');
                 while ($current.prev().length != 0) {
                     n++;
                     $current = $current.prev();
@@ -65,7 +75,7 @@ $(function () {
                     }
                 })
             });
-            this.$productSelectContainer.find('.item').click(function () {
+            this.$container.find('.item').click(function () {
                 var id = $(this).attr('id');
                 // 自身已添加
                 if (self.searchBox.searchItem(id)) {
@@ -95,13 +105,10 @@ $(function () {
                     }
                 }
                 // 可以添加
-                var html = Mustache.to_html(templateStr, {
-                    id: $(this).attr('id'),
-                    text: $(this).text()
-                });
-                self.searchBox.addSearchItem($(this).attr('id'), html);
+                self.searchBox.addSearchItem($(this).attr('id'), $(this).text());
             });
-            this.$productSelectContainer.find('.select-all').click(function () {
+            // 全部radio
+            this.$container.find('.select-all').click(function () {
                 var n = 0, $currentSubContent = $(this).closest('.sub-content');
                 $currentSubContent.find('span.item').each(function (index, element) {
                     var itemId = $(element).attr('id');
@@ -109,20 +116,10 @@ $(function () {
                         self.searchBox.deleteSearchItem(itemId);
                     }
                 });
-                var t = $currentSubContent;
-                while (t.prev().length != 0) {
-                    n++;
-                    t = t.prev();
-                }
-                var $categoryMenuA = $categoryMenuList.find('li').eq(n).find('a');
-                if (self.searchBox.searchItem($categoryMenuA.attr('id'))) {
+                if (self.searchBox.searchItem(self.productCategoryId)) {
                     return;
                 }
-                var html = Mustache.to_html(templateStr, {
-                    id: $categoryMenuA.attr('id'),
-                    text: $categoryMenuA.text()
-                });
-                self.searchBox.addSearchItem($categoryMenuA.attr('id'), html);
+                self.searchBox.addSearchItem(self.productCategoryId, $('#' + self.productCategoryId).text());
             });
         }
     };

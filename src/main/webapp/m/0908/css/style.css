@@ -16,13 +16,17 @@ body {
     line-height: 1;
 }
 
+a {
+    cursor: pointer;
+}
+
 ul {
     width: 180px;
     background: #faf2dd;
     position: relative;
     z-index: 0;
     padding: 20px 20px 30px;
-
+    height: 100%;
 }
 
 ul li {
@@ -83,18 +87,21 @@ ul li a.hover {
 }
 
 .search-menu-list {
+    width: 100%;
     top: 5px;
     position: relative;
     border: 1px solid #ddd;
+    display: none;
+}
+
+#category_menu_list, .content {
+    float: left;
 }
 
 .sub-content {
-    position: absolute;
     padding: 10px;
-    top: 0;
-    left: 0;
-    margin: 10px 10px 10px 180px;
-    width: 820px;
+    margin: 10px;
+    width: 700px;
 }
 
 .close-container {
@@ -166,10 +173,12 @@ dd {
     -webkit-transform: rotate(45deg);
     -o-transform: rotate(45deg);
 }
+
 .close-btn {
     width: 15px;
     height: 15px;
 }
+
 .remove-btn {
     width: 14px;
     height: 14px;
