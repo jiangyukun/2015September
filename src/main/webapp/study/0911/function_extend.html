@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    function extend(Parent, Child) {
+        Child.prototype.__proto__ = new Parent();
+    }
+</script>
+
+<script>
+
+    function A() {
+        this.a1 = 'a1';
+    }
+    A.prototype.a = function () {
+        console.log('a');
+    };
+    function B() {
+    }
+    B.prototype.a = function () {
+
+    };
+    B.prototype.b = function () {
+
+    };
+
+    extend(A, B);
+
+    var b = new B();
+    console.log(b);
+    console.log(b.a);
+    console.log(b.b);
+
+</script>
+</body>
+</html>
