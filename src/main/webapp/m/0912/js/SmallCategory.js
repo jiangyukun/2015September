@@ -6,7 +6,7 @@ function SmallCategory(bigCategory, $dl, searchBox) {
     this.searchBox = searchBox;
 
     this._template = _.template($('#smallCategoryTemplate').text());
-    this.uuid = 1;
+    this.uuid = null;
     this.itemList = [];
     this.appendItemList = [];
     this.$appendContainer = null;
@@ -33,7 +33,7 @@ SmallCategory.prototype = {
         // 小分类添加第一个
         if (add) {
             if (this.appendItemList.length == 0) {
-                var uuid = this.searchBox.uuid();
+                var uuid = self.uuid = this.searchBox.uuid();
                 this.$appendContainer = this.searchBox.addSmallCategory({
                     id: uuid,
                     html: this._template({
@@ -43,7 +43,12 @@ SmallCategory.prototype = {
                 });
             }
             this.$appendContainer.find('.item-container').append(item.html);
+            var searchItem = this.$appendContainer.find('#' + item.id);
+            searchItem.click(function () {
+                self.searchBox.reset(item.id, item.text);
+            });
             this.appendItemList.push({id: item.id});
+            this.searchBox.addSmallCategoryItem(this.uuid, item);
         } else {
             this.$appendContainer.find('#' + item.id).remove();
             item.remove();

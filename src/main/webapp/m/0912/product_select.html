@@ -28,7 +28,8 @@
     <div class="small-category-container"></div>
     <div class="search-menu-list clearfix">
         <div class="close-container">
-            <img src="images/plus.png" class="close-btn">
+            <!--<img src="images/plus.png" class="close-btn">-->
+            <span class="confirm-btn">确定</span>
         </div>
         <ul id="category_menu_list">
             <li><A id="shoujishuma">手机数码</A></li>
@@ -132,11 +133,25 @@
             </div>
         </div>
     </div>
+    <div class="product-brand clearfix">
+        <span class="brand-name">品牌：</span>
+        <div class="brand-items">
+            <div id="brand-item-all" class="brand-item">全部</div>
+        </div>
+        <span class="brand-more">
+            更多<span class="glyphicon glyphicon-chevron-down"></span>
+        </span>
+    </div>
 </div>
+
+
+
 <script id="itemTemplate" type="text/template">
     <span id="[[itemId]]" class="search-container-item">[[text]]</span>
 </script>
-
+<script id="brandItemTemplate" type="text/template">
+    <span id="[[brandItemId]]" class="search-container-item">[[text]]</span>
+</script>
 <script id="smallCategoryTemplate" type="text/template">
     <div id="[[smallCategoryId]]" class="small-category">
         <div class="small-category-tip">
