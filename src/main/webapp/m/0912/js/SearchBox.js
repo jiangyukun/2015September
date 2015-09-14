@@ -17,6 +17,7 @@ SearchBox.prototype = {
     init: function () {
         var i, self = this;
         this.$addArea.click(function () {
+            self.$appendContainer.show();
             for (i = 0; i < self.addAreaClickedListener.length; i++) {
                 self.addAreaClickedListener[i]();
             }

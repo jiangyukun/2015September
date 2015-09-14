@@ -17,9 +17,8 @@ $(function () {
         init: function () {
             var self = this;
 
-            var allProduct = new AllProduct(this.$container.find('ul'), this.$container.find('.content'), this.searchBox);
+            new AllProduct(this.$container.find('ul'), this.$container.find('.content'), this.searchBox);
             this.$container.hide();
-            this.$container.find('input[type=radio]').uniform();
             this.$container.find('.content').find('.sub-content:not(:first)').hide();
 
             this.searchBox.addListener(function () {

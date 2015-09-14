@@ -64,7 +64,7 @@ ul li a.hover {
     transition: top .2s;
 }
 
-.search-container {
+.product-container {
     width: 1000px;
     margin: 50px auto;
 }
@@ -89,7 +89,7 @@ ul li a.hover {
 
 .small-category-container {
     width: 100%;
-    min-height: 50px;
+    min-height: 34px;
     margin-top: 10px;
     border: 1px solid #ddd;
     display: none;
@@ -210,12 +210,13 @@ dd {
     display: none;
 }
 
-.brand-name, .brand-items {
+.brand-text, .brand-items {
     float: left;
 }
 
 .brand-name {
-    width: 60px;
+    text-align: right;
+    width: 69px;
 }
 
 .brand-items {

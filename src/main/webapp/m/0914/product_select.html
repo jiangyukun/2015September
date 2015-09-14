@@ -8,15 +8,17 @@
     <script src="js/lib/jquery.js"></script>
     <script src="js/lib/underscore.js"></script>
     <!--<script src="../../res/js/bootstrap.js"></script>-->
+    <script src="js/BrandItem.js"></script>
+    <script src="js/Brand.js"></script>
     <script src="js/SearchBox.js"></script>
     <script src="js/Item.js"></script>
     <script src="js/SmallCategory.js"></script>
     <script src="js/BigCategory.js"></script>
-    <script src="js/AllProduct.js"></script>
+    <script src="js/AllCategory.js"></script>
     <script src="js/ProductManage.js"></script>
 </head>
 <body>
-<div class="search-container">
+<div class="product-container">
     <div class="search-condition">
         <div class="btn-tip">
             <img class="img plus" src="images/plus.png">
@@ -36,7 +38,7 @@
             <li><A>家居、家具</A></li>
             <li><A>个户化妆</A></li>
 
-            <li id="current"></li>
+            <div id="current"></div>
         </ul>
         <div class="content">
             <div class="sub-content">
@@ -132,7 +134,11 @@
         </div>
     </div>
     <div class="product-brand clearfix">
-        <span class="brand-name">品牌：</span>
+        <div class="brand-text">
+            <label class="brand-name">品牌</label>
+            <label class="colonArea">：</label>
+        </div>
+
         <div class="brand-items">
             <!--<div id="brand-item-all" class="brand-item">全部</div>-->
         </div>
@@ -141,7 +147,6 @@
         </span>
     </div>
 </div>
-
 
 
 <script id="itemTemplate" type="text/template">
@@ -159,6 +164,34 @@
 
         <div class="item-container"></div>
     </div>
+</script>
+
+<script>
+    !function () {
+        _.templateSettings = {
+            interpolate: /\[\[(.+?)]]/g
+        };
+        var $productContainer = $('.product-container');
+        var $searchCondition = $('.search-condition');
+
+        var productManage = new ProductManage($productContainer, $searchCondition);
+
+        // 品牌回调
+        productManage.brandCallback(function (id, text) {
+            var brandItems = [];
+            brandItems.push({
+                id: '__brandItem_all',
+                text: '全部'
+            });
+            for (var i = 0; i < 40; i++) {
+                brandItems.push({
+                    id: '__brandItem_' + id + i,
+                    text: text + i
+                })
+            }
+            return brandItems;
+        });
+    }();
 </script>
 </body>
 </html>
