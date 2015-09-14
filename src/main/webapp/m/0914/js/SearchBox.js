@@ -54,7 +54,7 @@ SearchBox.prototype = {
         });
     },
     removeSmallCategoryItem: function (smallCategoryId, item) {
-        var emptySmallCategory = false, current;
+        var emptySmallCategory = false, current, self = this;
         $.each(this.smallCategoryList, function (index, smallCategory) {
             if (smallCategory.id == smallCategoryId) {
                 current = index;
@@ -70,6 +70,9 @@ SearchBox.prototype = {
                     emptySmallCategory = true;
                     smallCategory.$container.remove();
                 }
+                if (self.currentSmallCategoryItemId == item.id) {
+                    self.currentSmallCategoryItemId = null;
+                }
             }
         });
         if (emptySmallCategory) {
@@ -82,6 +85,7 @@ SearchBox.prototype = {
         for (i = 0; i < this.smallCategoryList.length; i++) {
             var smallCategory = this.smallCategoryList[i];
             var itemList = smallCategory.itemList;
+            var beforeSmallCategoryItemId = self.currentSmallCategoryItemId;
             for (j = 0; j < itemList.length; j++) {
                 var item = itemList[j];
                 var $item = self.$appendContainer.find('#' + item.id);
@@ -98,7 +102,7 @@ SearchBox.prototype = {
                         $item.addClass('search-container-item-clicked');
                         self.currentSmallCategoryItemId = itemId;
                     }
-                } else {
+                } else if (item.id != beforeSmallCategoryItemId || !self.productManage.opened) {
                     $item.removeClass('search-container-item-clicked');
                 }
             }
