@@ -164,22 +164,3 @@ dd {
     height: 17px;
     margin-top: -5px;
 }
-
-.close-btn, .remove-btn {
-    margin: 2px;
-    transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-}
-
-.close-btn {
-    width: 15px;
-    height: 15px;
-}
-
-.remove-btn {
-    width: 14px;
-    height: 14px;
-}

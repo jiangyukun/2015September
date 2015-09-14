@@ -6,14 +6,14 @@ $(function () {
     var $searchCondition = $('.search-condition');
     var $searchMenuList = $('.search-menu-list');
 
-    function ProductSelectBox($container, searchBox) {
+    function ProductManage($container, searchBox) {
         this.$container = $container;
         this.searchBox = searchBox;
         this.init();
     }
 
-    ProductSelectBox.prototype = {
-        constructor: ProductSelectBox,
+    ProductManage.prototype = {
+        constructor: ProductManage,
         init: function () {
             var self = this;
 
@@ -28,10 +28,28 @@ $(function () {
             this.$container.find('.close-container').click(function () {
                 self.$container.hide();
             });
+        },
+        setSearchProductChanged: function (callback) {
+            this.searchBox.addListener(callback, 'searchProductChanged');
         }
     };
 
     var searchBox = new SearchBox($searchCondition, $searchMenuList);
-    new ProductSelectBox($searchMenuList, searchBox);
+    var productManage = new ProductManage($searchMenuList, searchBox);
 
+    // 品牌回调
+    productManage.setSearchProductChanged(function (id, text) {
+        var brandItems = [];
+        brandItems.push({
+            id: '__brandItem_all',
+            text: '全部'
+        });
+        for (var i = 0; i < 40; i++) {
+            brandItems.push({
+                id: '__brandItem_' + id + i,
+                text: text + i
+            })
+        }
+        return brandItems;
+    });
 });

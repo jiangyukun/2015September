@@ -6,6 +6,7 @@ function SearchBox($container) {
     this._brandItemTemplate = _.template($('#brandItemTemplate').text());
     this.smallCategoryList = [];
     this.addAreaClickedListener = [];
+    this.smallCategoryItemChangedListener = null;
     this.uid = 1;
     this.currentSmallCategoryItemId = null;
     this.init();
@@ -20,8 +21,19 @@ SearchBox.prototype = {
                 self.addAreaClickedListener[i]();
             }
         });
+        this.$brandContainer.delegate('.brand-item', 'click', function () {
+            var $brandItem = $(this);
+            if ($brandItem.hasClass('brand-item-clicked')) {
+                $brandItem.removeClass('brand-item-clicked');
+            } else {
+                $brandItem.addClass('brand-item-clicked');
+            }
+        });
     },
-    addListener: function (listener) {
+    addListener: function (listener, type) {
+        if (type == 'searchProductChanged') {
+            this.smallCategoryItemChangedListener = listener;
+        }
         this.addAreaClickedListener.push(listener);
     },
     addSmallCategory: function (smallCategory) {
@@ -44,7 +56,7 @@ SearchBox.prototype = {
         });
     },
     reset: function (itemId, itemText) {
-        var i, self = this;
+        var i, self = this, brandItems;
         $.each(this.smallCategoryList, function (index, element) {
             $.each(element.itemList, function (i, item) {
                 var $item = self.$appendContainer.find('#' + item.id);
@@ -66,28 +78,36 @@ SearchBox.prototype = {
             var top = null, row = 0, current;
             var $brandItems = this.$brandContainer.find('.brand-items'), $brandItem;
             var $brandMore = this.$brandContainer.find('.brand-more');
-            $brandItems.find(':not(:first)').remove();
+            $brandItems.children().remove();
             $brandMore.hide();
             this.$brandContainer.show();
-            for (i = 1; i < 40; i++) {
-                var brandItemId = '__brand_item_' + i;
-                $brandItems.append(this._brandItemTemplate({brandItemId: brandItemId, text: itemText + i}));
-                $brandItem = $('#' + brandItemId);
-                if (top != $brandItem.position().top) {
-                    top = $brandItem.position().top;
-                    row++;
-                }
-                if (row > 3) {
-                    $brandItem.remove();
-                    $brandMore.show();
-                    current = i;
-                    $brandMore.off('click').click(function () {
-                        for (i = current; i < 40; i++) {
-                            $brandItems.append(self._brandItemTemplate({brandItemId: brandItemId, text: itemText + i}));
-                        }
-                        $brandMore.hide();
-                    });
-                    break;
+            if (typeof this.smallCategoryItemChangedListener == 'function') {
+                brandItems = this.smallCategoryItemChangedListener(itemId, itemText);
+                if (!brandItems.length) return;
+                for (i = 0; i < brandItems.length; i++) {
+                    var brandItem = brandItems[i];
+                    $brandItems.append(this._brandItemTemplate({brandItemId: brandItem.id, text: brandItem.text}));
+                    $brandItem = $('#' + brandItem.id);
+                    if (top != $brandItem.position().top) {
+                        top = $brandItem.position().top;
+                        row++;
+                    }
+                    if (row > 3) {
+                        $brandItem.remove();
+                        $brandMore.show();
+                        current = i;
+                        $brandMore.off('click').click(function () {
+                            for (i = current; i < 40; i++) {
+                                $brandItems.append(self._brandItemTemplate({
+                                    brandItemId: brandItem.id,
+                                    text: brandItem.text
+                                }));
+                            }
+                            $brandMore.hide();
+                        });
+                        break;
+                    } else {
+                    }
                 }
             }
         } else {

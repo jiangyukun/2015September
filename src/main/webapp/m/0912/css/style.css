@@ -193,20 +193,6 @@ dd {
     margin-top: -5px;
 }
 
-.close-btn, .remove-btn {
-    margin: 2px;
-    transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-}
-
-.close-btn {
-    width: 15px;
-    height: 15px;
-}
-
 .confirm-btn {
     color: green;
 }
@@ -238,7 +224,7 @@ dd {
 .brand-item {
     display: inline-block;
     cursor: pointer;
-    margin: 0 5px 3px 5px;
+    margin: 0 5px 7px 5px;
 }
 
 .brand-more {
@@ -246,4 +232,8 @@ dd {
     width: 50px;
     border: 0;
     cursor: pointer;
+}
+
+.brand-item-clicked {
+    color: red;
 }
