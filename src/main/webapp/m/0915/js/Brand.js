@@ -58,5 +58,14 @@ Brand.prototype = {
     },
     hide: function () {
         this.$container.hide();
+    },
+    getSelectedBrand: function () {
+        var brandList = [];
+        $.each(this.brandItemList, function (index, brandItem) {
+            if (brandItem.isSelected) {
+                brandList.push(brandItem.id);
+            }
+        });
+        return brandList;
     }
 };

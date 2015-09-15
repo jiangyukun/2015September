@@ -56,5 +56,11 @@ ProductManage.prototype = {
     },
     brandCallback: function (callback) {
         this.searchBox.addListener(callback, 'searchProductChanged');
+    },
+    getProductInfo: function () {
+        return {
+            selectProduct: this.searchBox.getSelectedProduct(),
+            selectedBrand: this.brand.getSelectedBrand()
+        }
     }
 };

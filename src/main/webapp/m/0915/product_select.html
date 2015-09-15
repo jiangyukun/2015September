@@ -148,7 +148,7 @@
     </div>
 </div>
 
-
+<button id="productInfo" class="btn btn-info">获取产品数据</button>
 <script id="itemTemplate" type="text/template">
     <span id="[[itemId]]" class="search-container-item">[[text]]</span>
 </script>
@@ -189,6 +189,10 @@
                 })
             }
             return brandItems;
+        });
+
+        $('#productInfo').click(function () {
+            console.log(productManage.getProductInfo());
         });
     }();
 </script>

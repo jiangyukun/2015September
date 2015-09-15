@@ -24,7 +24,9 @@ SearchBox.prototype = {
         this.$appendContainer.append(html);
         var $container = this.$appendContainer.find('#' + id);
         $container.click(function () {
-            self.removeSmallCategory(smallCategory.id);
+            if (self.productManage.opened) {
+                self.removeSmallCategory(smallCategory.id);
+            }
         });
         this.smallCategoryList.push({
             id: smallCategory.id,
@@ -132,6 +134,17 @@ SearchBox.prototype = {
         } else {
             this.productManage.brand.hide();
         }
+    },
+    getSelectedProduct: function () {
+        var productList = [];
+        $.each(this.smallCategoryList, function (index, smallCategory) {
+            var itemList = [];
+            $.each(smallCategory.itemList, function (index, item) {
+                itemList.push(item.id);
+            });
+            productList.push(itemList);
+        });
+        return productList;
     },
     uuid: function () {
         try {
