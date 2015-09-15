@@ -8,6 +8,7 @@
     <script src="js/lib/jquery.js"></script>
     <script src="js/lib/underscore.js"></script>
     <!--<script src="../../res/js/bootstrap.js"></script>-->
+    <script src="js/util/arrayUtil.js"></script>
     <script src="js/BrandItem.js"></script>
     <script src="js/Brand.js"></script>
     <script src="js/SearchBox.js"></script>
@@ -31,11 +32,11 @@
             <span class="confirm-btn">确定</span>
         </div>
         <ul id="category_menu_list">
-            <li><A id="shoujishuma">手机数码</A></li>
-            <li><A id="jiayongdianqi">家用电器</A></li>
-            <li><A id="jydq1">电脑、办公</A></li>
-            <li><A>家居、家具</A></li>
-            <li><A>个户化妆</A></li>
+            <li class="big-category"><A id="shoujishuma">手机数码</A></li>
+            <li class="big-category"><A id="jiayongdianqi">家用电器</A></li>
+            <li class="big-category"><A id="jydq1">电脑、办公</A></li>
+            <li class="big-category"><A>家居、家具</A></li>
+            <li class="big-category"><A>个户化妆</A></li>
 
             <li id="current"></li>
         </ul>
@@ -139,7 +140,7 @@
         </div>
 
         <div class="brand-items">
-            <!--<div id="brand-item-all" class="brand-item">全部</div>-->
+            <div id="brand-item-all" class="brand-item">全部</div>
         </div>
         <span class="brand-more">
             更多<span class="glyphicon glyphicon-chevron-down"></span>
@@ -160,7 +161,6 @@
             <label class="small-category-text">[[text]]</label>
             <label class="colonArea">：</label>
         </div>
-
         <div class="item-container"></div>
     </div>
 </script>
@@ -178,10 +178,10 @@
         // 品牌回调
         productManage.brandCallback(function (id, text) {
             var brandItems = [];
-            brandItems.push({
-                id: '__brandItem_all',
-                text: '全部'
-            });
+            /*brandItems.push({
+             id: '__brandItem_all',
+             text: '全部'
+             });*/
             for (var i = 0; i < 40; i++) {
                 brandItems.push({
                     id: '__brandItem_' + id + i,
