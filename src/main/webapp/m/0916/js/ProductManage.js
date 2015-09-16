@@ -12,12 +12,14 @@ function ProductManage($productContainer, $searchCondition) {
     this.init();
 }
 
+ProductManage.uid = 0;
+
 ProductManage.prototype = {
     constructor: ProductManage,
     init: function () {
         var self = this;
 
-        new AllProduct(this.$allCategory.find('ul'), this.$allCategory.find('.content'), this.searchBox);
+        new AllCategory(this.$allCategory.find('ul'), this.$allCategory.find('.content'), this);
         this.$allCategory.hide();
         this.$allCategory.find('.content').find('.sub-content:not(:first)').hide();
 
@@ -64,6 +66,12 @@ ProductManage.prototype = {
             }
         }
     },
+    addSmallCategoryItem: function (smallCategoryId, item) {
+        this.searchBox.addSmallCategoryItem(smallCategoryId, item);
+    },
+    removeSmallCategoryItem: function (smallCategoryId, item) {
+        this.searchBox.removeSmallCategoryItem(smallCategoryId, item);
+    },
     changeClickTip: function () {
         if (this.searchBox.smallCategoryList.length != 0) {
             this.$btnArea.find('.addTip').text('点此增减商品名称');
@@ -78,6 +86,13 @@ ProductManage.prototype = {
         return {
             selectProduct: this.searchBox.getSelectedProduct(),
             selectedBrand: this.brand.getSelectedBrand()
+        }
+    },
+    uuid: function () {
+        try {
+            return '__common_' + ProductManage.uid;
+        } finally {
+            ProductManage.uid++;
         }
     }
 };

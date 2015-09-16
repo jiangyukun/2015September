@@ -1,4 +1,4 @@
-function AllProduct($ul, $content, searchBox) {
+function AllCategory($ul, $content, productManage) {
     this.$container = $ul;
     this.$content = $content;
     this.bigCategoryList = [];
@@ -6,12 +6,12 @@ function AllProduct($ul, $content, searchBox) {
     this.index = 0;
     this.$current = this.$container.find('#current');
 
-    this.searchBox = searchBox;
+    this.productManage = productManage;
     this.init();
 }
 
-AllProduct.prototype = {
-    constructor: AllProduct,
+AllCategory.prototype = {
+    constructor: AllCategory,
     init: function () {
         var self = this;
         this.$container.find('li.big-category').each(function (index, element) {
@@ -23,7 +23,7 @@ AllProduct.prototype = {
                 self.$beforeSubContent = self.$content.find('.sub-content').eq(index);
                 self.index = index;
             }
-            self.bigCategoryList.push(new BigCategory($li, index, self.searchBox));
+            self.bigCategoryList.push(new BigCategory($li, index, self.productManage));
             $li.hover(function () {
                 if (index == self.index) return;
                 var $subContent = self.$content.find('.sub-content').eq(index);

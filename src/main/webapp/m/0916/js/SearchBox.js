@@ -2,9 +2,11 @@ function SearchBox($container, productManage) {
     this.$container = $container;
     this.productManage = productManage;
     this.$appendContainer = $('.small-category-container');
+    this._smallCategoryTemplate = _.template($('#smallCategoryTemplate').text());
+    this._itemTemplate = _.template($('#itemTemplate').text());
+
     this.smallCategoryList = [];
     this.brandListener = null;
-    this.uid = 1;
     this.currentSmallCategoryItemId = null;
     this.init();
 }
@@ -29,20 +31,46 @@ SearchBox.prototype = {
             this.brandListener = listener;
         }
     },
-    addSmallCategory: function (smallCategory) {
-        var id = smallCategory.id, html = smallCategory.html, self = this;
-        this.$appendContainer.append(html);
-        var $container = this.$appendContainer.find('#' + id);
-        $container.find('.small-category-text').click(function () {
-            if (self.productManage.opened) {
-                self.removeSmallCategory(smallCategory.id);
+    getSmallCategory: function (smallCategoryId) {
+        var sc = null;
+        $.each(this.smallCategoryList, function (index, smallCategory) {
+            if (smallCategory.uuid == smallCategoryId) {
+                sc = smallCategory;
+                return true;
             }
         });
-        this.smallCategoryList.push({
-            id: smallCategory.id,
+        return sc;
+    },
+    addSmallCategory: function (smallCategory) {
+        var uuid = smallCategory.uuid, self = this;
+        var html = this._smallCategoryTemplate({smallCategoryId: smallCategory.uuid, text: smallCategory.text});
+        this.$appendContainer.append(html);
+        var $container = this.$appendContainer.find('#' + uuid);
+        $container.find('.small-category-text').click(function () {
+            if (self.productManage.opened) {
+                self.removeSmallCategory(smallCategory.uuid);
+            }
+        });
+        var localSmallCategory = {
+            uuid: smallCategory.uuid,
             itemList: [],
             $container: $container,
             $itemContainer: $container.find('.item-container')
+        };
+        this.smallCategoryList.push(localSmallCategory);
+        return localSmallCategory;
+    },
+    addSmallCategoryItem: function (smallCategory, item) {
+        var self = this;
+        var localSmallCategory = this.getSmallCategory(smallCategory.uuid);
+        if (localSmallCategory == null) {
+            localSmallCategory = this.addSmallCategory(smallCategory);
+        }
+        localSmallCategory.itemList.push(item);
+        localSmallCategory.$itemContainer.append(this._itemTemplate({itemId: item.id, text: item.text}));
+        var $item = localSmallCategory.$itemContainer.find('#' + item.id);
+        $item.click(function () {
+            self.itemClick(localSmallCategory, item);
         });
     },
     removeSmallCategory: function (smallCategoryId) {
@@ -50,29 +78,9 @@ SearchBox.prototype = {
         var smallCategory = this.getSmallCategory(smallCategoryId);
         smallCategory.$container.remove();
         $.each(smallCategory.itemList, function (index, item) {
-            self.removeSmallCategoryItem(smallCategoryId, item);
+            self.removeSmallCategoryItem(smallCategory.uuid, item);
         });
         this.smallCategoryList = arrayUtil.removeElement(self.smallCategoryList, smallCategory);
-    },
-    getSmallCategory: function (smallCategoryId) {
-        var sc = null;
-        $.each(this.smallCategoryList, function (index, smallCategory) {
-            if (smallCategory.id == smallCategoryId) {
-                sc = smallCategory;
-                return true;
-            }
-        });
-        return sc;
-    },
-    addSmallCategoryItem: function (smallCategoryId, item) {
-        var self = this;
-        var smallCategory = this.getSmallCategory(smallCategoryId);
-        smallCategory.itemList.push(item);
-        smallCategory.$itemContainer.append(item.html);
-        var $item = smallCategory.$itemContainer.find('#' + item.id);
-        $item.click(function () {
-            self.itemClick(smallCategoryId, item.id, item.text);
-        });
     },
     removeSmallCategoryItem: function (smallCategoryId, item) {
         var emptySmallCategory = false, self = this;
@@ -94,18 +102,18 @@ SearchBox.prototype = {
             self.removeSmallCategory(smallCategoryId);
         }
     },
-    itemClick: function (smallCategoryId, itemId, itemText) {
-        var i, j, self = this, brandItems;
+    itemClick: function (localSmallCategory, item) {
+        var i, j, self = this, brandItems, itemId = item.id, itemText = item.text;
         for (i = 0; i < this.smallCategoryList.length; i++) {
             var smallCategory = this.smallCategoryList[i];
             var itemList = smallCategory.itemList;
             var beforeSmallCategoryItemId = self.currentSmallCategoryItemId;
             for (j = 0; j < itemList.length; j++) {
-                var item = itemList[j];
-                var $item = self.$appendContainer.find('#' + item.id);
-                if (item.id == itemId) {
+                var _item = itemList[j];
+                var $item = self.$appendContainer.find('#' + _item.id);
+                if (_item.id == itemId) {
                     if (self.productManage.opened) {
-                        self.removeSmallCategoryItem(smallCategory.id, item);
+                        self.removeSmallCategoryItem(smallCategory.uuid, _item);
                         $item.remove();
                         if (beforeSmallCategoryItemId == itemId) {
                             self.currentSmallCategoryItemId = null;
@@ -119,7 +127,7 @@ SearchBox.prototype = {
                         $item.addClass('search-container-item-clicked');
                         self.currentSmallCategoryItemId = itemId;
                     }
-                } else if (item.id != beforeSmallCategoryItemId || !self.productManage.opened) {
+                } else if (_item.id != beforeSmallCategoryItemId || !self.productManage.opened) {
                     $item.removeClass('search-container-item-clicked');
                 }
             }
@@ -144,12 +152,5 @@ SearchBox.prototype = {
             productList.push(itemList);
         });
         return productList;
-    },
-    uuid: function () {
-        try {
-            return '__common_' + this.uid;
-        } finally {
-            this.uid++;
-        }
     }
 };

@@ -1,14 +1,12 @@
-function Item(smallCategory, $span, searchBox) {
+function Item(smallCategory, $span) {
     this.smallCategory = smallCategory;
     this.$item = $span;
-    this.searchBox = searchBox;
-    this._template = _.template($('#itemTemplate').text());
+    this.secondSetFlag = false;
 
     this.originalId = this.$item.find('span').attr('id');
     this.id = '__item_' + this.originalId;
     this.text = this.$item.find('span').text();
     this.selectable = true;
-    this.secondSetFlag = false;
     this.init();
 }
 
@@ -16,10 +14,6 @@ Item.prototype = {
     constructor: Item,
     init: function () {
         var self = this;
-        this.html = this._template({
-            itemId: this.id,
-            text: this.text
-        });
         this.$item.click(function () {
             if (self.selectable) {
                 self.$item.find('span').addClass('selected');

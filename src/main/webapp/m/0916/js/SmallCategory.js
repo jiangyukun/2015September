@@ -1,12 +1,12 @@
-function SmallCategory(bigCategory, $dl, searchBox) {
+function SmallCategory(bigCategory, $dl, productManage) {
     this.bigCategory = bigCategory;
     this.$container = $dl;
     this.$smallCategory = this.$container.find('dt');
-    this.searchBox = searchBox;
+    this.productManage = productManage;
 
-    this.uuid = this.searchBox.uuid();
+    this.uuid = this.productManage.uuid();
     this.text = this.$smallCategory.find('span').text();
-    this._template = _.template($('#smallCategoryTemplate').text());
+
     this.itemList = [];
     this.init();
 }
@@ -23,19 +23,9 @@ SmallCategory.prototype = {
     },
     itemClicked: function (item) {
         if (item.selectable) {
-            // 小分类添加第一个
-            if (this.searchBox.getSmallCategory(this.uuid) == null) {
-                this.searchBox.addSmallCategory({
-                    id: this.uuid,
-                    html: this._template({
-                        smallCategoryId: this.uuid,
-                        text: this.text
-                    })
-                });
-            }
-            this.searchBox.addSmallCategoryItem(this.uuid, item);
+            this.productManage.addSmallCategoryItem(this, item);
         } else {
-            this.searchBox.removeSmallCategoryItem(this.uuid, item);
+            this.productManage.removeSmallCategoryItem(this.uuid, item);
         }
     }
 };

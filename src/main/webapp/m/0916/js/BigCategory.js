@@ -1,11 +1,11 @@
-function BigCategory($li, index, searchBox) {
+function BigCategory($li, index, productManage) {
     this.$li = $li;
     this.$subContent = $('.content .sub-content').eq(index);
 
     this.id = this.$li.find('a').attr('id');
     this.text = this.$li.find('a').text();
     this.smallCategoryList = [];
-    this.searchBox = searchBox;
+    this.productManage = productManage;
     this.init();
 }
 
@@ -16,7 +16,7 @@ BigCategory.prototype = {
 
         this.$subContent.find('dl').each(function (index, element) {
             var $dl = $(element);
-            self.smallCategoryList.push(new SmallCategory(self, $dl, self.searchBox));
+            self.smallCategoryList.push(new SmallCategory(self, $dl, self.productManage));
         });
     }
 };
