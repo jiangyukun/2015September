@@ -20,6 +20,7 @@
 </head>
 <body>
 <div class="product-container">
+    <button id="productInfo" class="btn btn-info">获取产品数据</button>
     <div class="search-condition">
         <div class="btn-tip">
             <img class="img plus" src="images/plus.png">
@@ -148,7 +149,7 @@
     </div>
 </div>
 
-<button id="productInfo" class="btn btn-info">获取产品数据</button>
+
 <script id="itemTemplate" type="text/template">
     <span id="[[itemId]]" class="search-container-item">[[text]]</span>
 </script>
@@ -178,10 +179,6 @@
         // 品牌回调
         productManage.brandCallback(function (id, text) {
             var brandItems = [];
-            /*brandItems.push({
-             id: '__brandItem_all',
-             text: '全部'
-             });*/
             for (var i = 0; i < 40; i++) {
                 brandItems.push({
                     id: '__brandItem_' + id + i,

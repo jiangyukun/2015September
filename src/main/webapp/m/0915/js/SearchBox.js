@@ -23,7 +23,7 @@ SearchBox.prototype = {
         var id = smallCategory.id, html = smallCategory.html, self = this;
         this.$appendContainer.append(html);
         var $container = this.$appendContainer.find('#' + id);
-        $container.click(function () {
+        $container.find('.small-category-text').click(function () {
             if (self.productManage.opened) {
                 self.removeSmallCategory(smallCategory.id);
             }
@@ -42,8 +42,9 @@ SearchBox.prototype = {
             if (smallCategory.id == smallCategoryId) {
                 smallCategory.$container.remove();
                 $.each(smallCategory.itemList, function (index, item) {
-                    item.remove();
-                    smallCategory.itemList = arrayUtil.removeElementInPosition(smallCategory.itemList, index);
+                    /*item.remove();
+                     smallCategory.itemList = arrayUtil.removeElementInPosition(smallCategory.itemList, index);*/
+                    self.removeSmallCategoryItem(smallCategoryId, item);
                 });
                 self.smallCategoryList = arrayUtil.removeElementInPosition(self.smallCategoryList, index);
                 return true;
@@ -111,6 +112,9 @@ SearchBox.prototype = {
                     if (self.productManage.opened) {
                         self.removeSmallCategoryItem(smallCategory.id, item);
                         $item.remove();
+                        if (beforeSmallCategoryItemId == itemId) {
+                            self.currentSmallCategoryItemId = null;
+                        }
                         return;
                     }
                     if ($item.hasClass('search-container-item-clicked')) {
