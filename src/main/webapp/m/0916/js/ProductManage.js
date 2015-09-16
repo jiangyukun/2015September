@@ -12,10 +12,9 @@ function ProductManage($productContainer, $searchCondition) {
     this.init();
 }
 
-ProductManage.uid = 0;
-
 ProductManage.prototype = {
     constructor: ProductManage,
+    uid: 0,
     init: function () {
         var self = this;
 
@@ -90,9 +89,9 @@ ProductManage.prototype = {
     },
     uuid: function () {
         try {
-            return '__common_' + ProductManage.uid;
+            return '__common_' + this.uid;
         } finally {
-            ProductManage.uid++;
+            this.uid++;
         }
     }
 };

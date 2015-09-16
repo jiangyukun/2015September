@@ -178,13 +178,22 @@
 
         // 品牌回调
         productManage.brandCallback(function (id, text) {
-            var brandItems = [];
-            for (var i = 0; i < 40; i++) {
+            var i, brandItems = [];
+            for (i = 0; i < 40; i++) {
                 brandItems.push({
                     id: '__brandItem_' + id + i,
                     text: text + i
                 })
             }
+            /*$.get('', {id: 'xxxx'}, function (data) {
+                for (i = 0; i < data.length; i++) {
+                    var item = data[i];
+                    brandItems.push({
+                        id: item.id,
+                        text: item.text
+                    });
+                }
+            }, 'json');*/
             return brandItems;
         });
 
