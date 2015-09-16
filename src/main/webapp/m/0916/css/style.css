@@ -161,7 +161,7 @@ dd {
     font-size: 14px;
 }
 
-.item, .search-remove, .close-container, .search-container-item, .small-category-text {
+.item, .search-remove, .close-container, .search-container-item, .clickable {
     cursor: pointer;
 }
 
