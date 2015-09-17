@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>product</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/underscore.js"></script>
+    <!--<script src="../../res/js/bootstrap.js"></script>-->
+    <script src="js/util/arrayUtil.js"></script>
+    <script src="js/BrandItem.js"></script>
+    <script src="js/Brand.js"></script>
+    <script src="js/SearchBox.js"></script>
+    <script src="js/Item.js"></script>
+    <script src="js/SmallCategory.js"></script>
+    <script src="js/BigCategory.js"></script>
+    <script src="js/AllCategory.js"></script>
+    <script src="js/ProductManage.js"></script>
+</head>
+<body>
+<div class="product-container">
+    <button id="productInfo" class="btn btn-info">获取产品数据</button>
+    <div class="search-condition">
+        <div class="btn-tip">
+            <img class="img plus" src="images/plus.png">
+            <span class="addTip">点此添加商品名称</span>
+        </div>
+    </div>
+    <div class="small-category-container"></div>
+    <div class="search-menu-list clearfix">
+        <div class="close-container">
+            <span class="confirm-btn">确定</span>
+        </div>
+        <ul id="category_menu_list">
+            <li class="big-category"><A id="shoujishuma">手机数码</A></li>
+            <li class="big-category"><A id="jiayongdianqi">家用电器</A></li>
+            <li class="big-category"><A id="jydq1">电脑、办公</A></li>
+            <li class="big-category"><A>家居、家具</A></li>
+            <li class="big-category"><A>个户化妆</A></li>
+
+            <li id="current"></li>
+        </ul>
+        <div class="content">
+            <div class="sub-content">
+                <dl>
+                    <dt><span id="dajiadian">大家电</span></dt>
+
+                    <dd><span id="product1" class="item">平叛电视</span></dd>
+                    <dd><span id="product2" class="item">空调</span></dd>
+                    <dd><span id="product3" class="item">冰箱</span></dd>
+                    <dd><span id="xiyiji" class="item">洗衣机</span></dd>
+                    <dd><span id="jiatingyingyuan" class="item">家庭影院</span></dd>
+                    <dd><span id="dvd" class="item">DVD</span></dd>
+                </dl>
+                <dl>
+                    <dt><span>生活电器</span></dt>
+
+                    <dd><span id="dianfengshan" class="item">电风扇</span></dd>
+                </dl>
+            </div>
+            <div class="sub-content">
+                <dl>
+                    <dt><span>B</span></dt>
+
+                    <dd><span id="product4" class="item">b1</span></dd>
+                    <dd><span id="product5" class="item">b2</span></dd>
+                    <dd><span id="product6" class="item">b3</span></dd>
+                </dl>
+            </div>
+            <div class="sub-content">
+                <dl>
+                    <dt><span id="djd_10">大家电</span></dt>
+                    <dd><span id="pbds_100" class="item">平板电视</span></dd>
+                    <dd><span id="kt_101" class="item">空调</span></dd>
+                    <dd><span id="bx_102" class="item">冰箱</span></dd>
+                    <dd><span id="xyj_103" class="item">洗衣机</span></dd>
+                    <dd><span id="jtyy_104" class="item">家庭影院</span></dd>
+                    <dd><span id="mnyx_105" class="item">迷你音响</span></dd>
+                    <dd><span id="yjzj_106" class="item">烟机灶具</span></dd>
+                    <dd><span id="rsq_107" class="item">热水器</span></dd>
+                    <dd><span id="xdg_108" class="item">消毒柜</span></dd>
+                    <dd><span id="xwj_109" class="item">洗碗机</span></dd>
+                    <dd><span id="lg_110" class="item">冷柜</span></dd>
+                </dl>
+                <dl>
+                    <dt><span id="shdq_11">生活电器</span></dt>
+                    <dd><span id="dfs_200" class="item">电风扇</span></dd>
+                    <dd><span id="lfs_201" class="item">冷风扇</span></dd>
+                    <dd><span id="jhq_202" class="item">净化器</span></dd>
+                    <dd><span id="jsq_203" class="item">加湿器</span></dd>
+                    <dd><span id="sdjq_204" class="item">扫地机器</span></dd>
+                    <dd><span id="xcq_205" class="item">吸尘器</span></dd>
+                    <dd><span id="gtj_206" class="item">挂烫机</span></dd>
+                    <dd><span id="qjj_207" class="item">清洁机</span></dd>
+                    <dd><span id="csq_208" class="item">除湿机</span></dd>
+                    <dd><span id="gyj_209" class="item">干衣机</span></dd>
+                    <dd><span id="slyj_210" class="item">收录音机</span></dd>
+                    <dd><span id="qndq_211" class="item">取暖电器</span></dd>
+                    <dd><span id="jssb_212" class="item">净水设备</span></dd>
+                    <dd><span id="ysj_213" class="item">饮水机</span></dd>
+                </dl>
+                <dl>
+                    <dt><span id="cfdq_12">厨房电器</span></dt>
+                    <dd><span id="dylg_300" class="item">电压力锅</span></dd>
+                    <dd><span id="dfb_301" class="item">电饭煲</span></dd>
+                    <dd><span id="djj_302" class="item">豆浆机</span></dd>
+                    <dd><span id="mbj_303" class="item">面包机</span></dd>
+                    <dd><span id="kfj_304" class="item">咖啡机</span></dd>
+                    <dd><span id="wbl_305" class="item">微波炉</span></dd>
+                    <dd><span id="zzj_306" class="item">榨汁机</span></dd>
+                    <dd><span id="dkx_307" class="item">电烤箱</span></dd>
+                    <dd><span id="dcl_308" class="item">电磁炉</span></dd>
+                    <dd><span id="dbc_309" class="item">电饼铛</span></dd>
+                    <dd><span id="zdq_310" class="item">煮蛋器</span></dd>
+                    <dd><span id="snj_311" class="item">酸奶机</span></dd>
+                    <dd><span id="dsh_312" class="item">电水壶</span></dd>
+                    <dd><span id="ddg_313" class="item">电炖锅</span></dd>
+                    <dd><span id="ysh_314" class="item">养生壶</span></dd>
+                    <dd><span id="drfh_315" class="item">电热饭盒</span></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="product-brand">
+        <div class="clearfix">
+            <div class="brand-text">
+                <label class="brand-name">品牌</label>
+                <label class="colonArea">：</label>
+            </div>
+            <div class="brand-items">
+                <div id="brand-item-all" class="brand-item">全部</div>
+            </div>
+            <span class="brand-more">
+                更多<span class="glyphicon glyphicon-chevron-down"></span>
+            </span>
+        </div>
+
+        <div class="brand-confirm-btn">
+            <button class="btn">确定</button>
+        </div>
+    </div>
+</div>
+
+
+<script id="itemTemplate" type="text/template">
+    <span id="[[itemId]]" class="search-container-item">[[text]]</span>
+</script>
+<script id="brandItemTemplate" type="text/template">
+    <span id="[[brandItemId]]" class="brand-item">[[text]]</span>
+</script>
+<script id="smallCategoryTemplate" type="text/template">
+    <div id="[[smallCategoryId]]" class="small-category">
+        <div class="small-category-tip">
+            <label class="small-category-text clickable">[[text]]</label>
+            <label class="colonArea">：</label>
+        </div>
+        <div class="item-container"></div>
+    </div>
+</script>
+
+<script>
+    !function () {
+        _.templateSettings = {
+            interpolate: /\[\[(.+?)]]/g
+        };
+        var $productContainer = $('.product-container');
+        var $searchCondition = $('.search-condition');
+
+        var productManage = new ProductManage($productContainer, $searchCondition);
+
+        // 品牌回调
+        productManage.brandCallback(function (id, text) {
+            var i, brandItems = [];
+            for (i = 0; i < 40; i++) {
+                brandItems.push({
+                    id: '__brandItem_' + id + i,
+                    text: text + i
+                })
+            }
+            /*$.get('', {id: 'xxxx'}, function (data) {
+             for (i = 0; i < data.length; i++) {
+             var item = data[i];
+             brandItems.push({
+             id: item.id,
+             text: item.text
+             });
+             }
+             }, 'json');*/
+            return brandItems;
+        });
+
+        productManage.addListener('close', function (productInfo) {
+            console.log(productInfo);
+        });
+
+        productManage.addListener('brand', function (productInfo) {
+            console.log(productInfo);
+        });
+
+        $('#productInfo').click(function () {
+            console.log(productManage.getProductInfo());
+        });
+    }();
+</script>
+</body>
+</html>
