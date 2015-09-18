@@ -91,7 +91,8 @@ ProductManage.prototype = {
     getProductInfo: function () {
         return {
             selectProduct: this.searchBox.getSelectedProduct(),
-            selectedBrand: this.brand.getSelectedBrand()
+            selectedBrand: this.brand.getSelectedBrand(),
+            smallCategoryId: this.searchBox.currentSmallCategoryItemId
         }
     },
     uuid: function () {

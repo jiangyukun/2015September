@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../res/js/underscore.js"></script>
+</head>
+<body>
+
+<script>
+    var a = _.map([1, 2, 3], function (num) {
+        return num * 2;
+    });
+    console.log(a);
+    a = _.map({one: 1, two: 2, three: 3}, function (num, key) {
+        return {
+            key: key,
+            num: num * 3
+        };
+    });
+    console.log(a);
+    a = _.map([[1, 2], [3, 4]], _.first);
+    console.log(a);
+</script>
+</body>
+</html>

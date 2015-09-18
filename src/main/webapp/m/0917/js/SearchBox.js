@@ -62,13 +62,15 @@ SearchBox.prototype = {
     },
     addSmallCategoryItem: function (smallCategory, item) {
         var self = this;
+        item.internalId = '__item_' + item.id;
         var localSmallCategory = this.getSmallCategory(smallCategory.uuid);
         if (localSmallCategory == null) {
             localSmallCategory = this.addSmallCategory(smallCategory);
         }
         localSmallCategory.itemList.push(item);
-        localSmallCategory.$itemContainer.append(this._itemTemplate({itemId: item.id, text: item.text}));
-        var $item = localSmallCategory.$itemContainer.find('#' + item.id);
+        var uniqueItemId = '__item_' + item.id;
+        localSmallCategory.$itemContainer.append(this._itemTemplate({itemId: item.internalId, text: item.text}));
+        var $item = localSmallCategory.$itemContainer.find('#' + item.internalId);
         $item.click(function () {
             self.itemClick(localSmallCategory, item);
         });
@@ -86,7 +88,7 @@ SearchBox.prototype = {
         var emptySmallCategory = false, self = this;
         var smallCategory = this.getSmallCategory(smallCategoryId);
         item.remove();
-        smallCategory.$container.find('#' + item.id).remove();
+        smallCategory.$container.find('#' + item.internalId).remove();
         $.each(smallCategory.itemList, function (index, exitItem) {
             if (exitItem.id == item.id) {
                 smallCategory.itemList = arrayUtil.removeElementInPosition(smallCategory.itemList, index);
@@ -110,7 +112,7 @@ SearchBox.prototype = {
             var beforeSmallCategoryItemId = self.currentSmallCategoryItemId;
             for (j = 0; j < itemList.length; j++) {
                 var _item = itemList[j];
-                var $item = self.$appendContainer.find('#' + _item.id);
+                var $item = self.$appendContainer.find('#' + _item.internalId);
                 if (_item.id == itemId) {
                     if (self.productManage.opened) {
                         self.removeSmallCategoryItem(smallCategory.uuid, _item);

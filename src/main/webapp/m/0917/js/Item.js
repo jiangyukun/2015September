@@ -3,8 +3,7 @@ function Item(smallCategory, $span) {
     this.$item = $span;
     this.secondSetFlag = false;
 
-    this.originalId = this.$item.find('span').attr('id');
-    this.id = '__item_' + this.originalId;
+    this.id =  this.$item.find('span').attr('id');
     this.text = this.$item.find('span').text();
     this.selectable = true;
     this.init();
@@ -31,6 +30,6 @@ Item.prototype = {
         this.$item.find('span').removeClass('selected');
     },
     getId: function () {
-        return this.originalId;
+        return this.id;
     }
 };
