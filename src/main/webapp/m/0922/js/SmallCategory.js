@@ -23,9 +23,9 @@ SmallCategory.prototype = {
     },
     itemClicked: function (item) {
         if (item.selectable) {
-            this.productManage.addSmallCategoryItem(item);
+            this.productManage.addProductItem(item);
         } else {
-            this.productManage.removeSmallCategoryItem(item);
+            this.productManage.removeProductItem(item);
         }
     }
 };

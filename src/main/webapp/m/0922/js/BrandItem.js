@@ -15,17 +15,15 @@ BrandItem.prototype = {
         var self = this;
         this.$brandItem.click(function () {
             if (self.isSelected) {
+                self.brand.currentSelectedBrand = null;
                 self.$brandItem.removeClass(self.className);
             } else {
-                if (self.type == 'all') {
-                    $.each(self.brand.brandItemList, function (index, brandItem) {
-                        if (brandItem != self) {
-                            brandItem.reset();
-                        }
-                    });
-                } else if (self.type == 'item') {
-                    self.brand.brandItemList[0].reset();
-                }
+                self.brand.currentSelectedBrand = self;
+                $.each(self.brand.brandItemList, function (index, brandItem) {
+                    if (brandItem != self) {
+                        brandItem.reset();
+                    }
+                });
                 self.$brandItem.addClass(self.className);
             }
             self.isSelected = !self.isSelected;

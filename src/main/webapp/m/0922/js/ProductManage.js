@@ -3,12 +3,17 @@ function ProductManage($productContainer, $searchCondition) {
     this.$allCategory = this.$container.find('.search-menu-list');
     this.$content = this.$container.find('.content');
     this.$btnArea = this.$container.find('.addTip');
+    this.$selectBrandArea = this.$container.find('.select-brand-tip');
+    this.$selectBrandBtn = this.$container.find('.select-brand-tip span');
+    this.$emptyProductTip = this.$container.find('.empty-product-item-tip');
+    this._brandItemTemplate = _.template($('#selectedBrandTemplate').html());
 
     this.opened = false;
     this.listenerList = [];
 
     this.brand = new Brand($('.product-brand'), this);
     this.searchBox = new SearchBox($searchCondition, this);
+    this._brandCallback = null;
     this.init();
 }
 
@@ -27,6 +32,41 @@ ProductManage.prototype = {
         });
         this.$container.find('.close-container').click(function () {
             self.close();
+        });
+        this.$selectBrandBtn.click(function () {
+            var item = self.searchBox.item;
+            if (!item) {
+                self.$emptyProductTip.show();
+            } else {
+                self.$emptyProductTip.hide();
+                var brandItems = self._brandCallback(item.id, item.text);
+                self.brand.refreshBrand(brandItems);
+            }
+        });
+        this.$emptyProductTip.click(function () {
+            self.$emptyProductTip.hide();
+        });
+        this.searchBox.addListener(function (item) {
+            self.$selectBrandArea.find(':not(:first)').remove();
+            self.$selectBrandBtn.show();
+            self.brand.hide();
+        });
+        this.brand.addListener(function (brandItem) {
+            if (!brandItem) {
+                self.$selectBrandArea.show();
+            } else {
+                var brandItemHtml = self._brandItemTemplate({
+                    selectedBrandItemId: brandItem.id,
+                    selectedBrandItemName: brandItem.text
+                });
+                self.$selectBrandArea.find(':not(:first)').remove();
+                self.$selectBrandArea.append(brandItemHtml);
+                var selectedBrandItem = self.$selectBrandArea.find('span[data-id="' + brandItem.id + '"]');
+                selectedBrandItem.click(function () {
+                    self.brand.show();
+                });
+                self.$selectBrandBtn.hide();
+            }
         });
     },
     // open, close, brand, all
@@ -53,23 +93,13 @@ ProductManage.prototype = {
         var self = this;
         self.opened = false;
         self.$allCategory.hide();
-        if (self.searchBox.smallCategoryList.length == 0) {
-            self.searchBox.$appendContainer.hide();
-        }
-        self.changeClickTip();
-        if (self.searchBox.currentSmallCategoryItemId) {
-            self.brand.show();
-        } else {
-            self.brand.reset();
-        }
+
         self.triggerListener('close');
     },
     open: function () {
         var self = this;
         self.opened = true;
         self.triggerListener('open');
-        self.brand.hide();
-        self.searchBox.$appendContainer.show();
         self.$allCategory.show();
     },
     changeState: function () {
@@ -79,27 +109,19 @@ ProductManage.prototype = {
         }
         this.open();
     },
-    addSmallCategoryItem: function (item) {
+    addProductItem: function (item) {
         this.searchBox.addItem(item);
     },
-    removeSmallCategoryItem: function () {
+    removeProductItem: function () {
         this.searchBox.removeItem();
     },
-    changeClickTip: function () {
-        if (this.searchBox.smallCategoryList.length != 0) {
-            this.$btnArea.find('.addTip').text('点此增减商品名称');
-        } else {
-            this.$btnArea.find('.addTip').text('点此添加商品名称');
-        }
-    },
     brandCallback: function (callback) {
-        this.searchBox.addListener(callback, 'brand');
+        this._brandCallback = callback;
     },
     getProductInfo: function () {
         return {
             selectProduct: this.searchBox.getSelectedProduct(),
-            selectedBrand: this.brand.getSelectedBrand(),
-            smallCategoryId: this.searchBox.currentSmallCategoryItemId
+            selectedBrand: this.brand.getSelectedBrand()
         }
     },
     uuid: function () {

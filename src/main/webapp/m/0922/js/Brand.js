@@ -6,10 +6,11 @@ function Brand($container, productManage) {
     this.$more = this.$container.find('.brand-more');
     this.$confirmBtn = this.$container.find('.brand-confirm-btn .btn');
 
-    this._brandItemTemplate = _.template($('#brandItemTemplate').text());
+    this._brandItemTemplate = _.template($('#brandItemTemplate').html());
     this.brandItemList = [];
     this.brandItemAll = new BrandItem(this.$brandItemAll.attr('id'), this.$brandItemAll.text(), 'all', this);
     this.current = null;
+    this.currentSelectedBrand = null;
     this.listenerList = [];
     this.init();
 }
@@ -31,11 +32,11 @@ Brand.prototype = {
             self.$more.hide();
         });
         this.$confirmBtn.click(function () {
-            var productInfo = self.productManage.getProductInfo();
             for (i = 0; i < self.listenerList.length; i++) {
                 var listener = self.listenerList[i];
-                listener(productInfo);
+                listener(self.currentSelectedBrand);
             }
+            self.hide();
         });
     },
     addListener: function (listener) {

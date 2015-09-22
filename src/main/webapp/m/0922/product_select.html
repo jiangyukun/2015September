@@ -119,6 +119,12 @@
             </div>
         </div>
     </div>
+    <div id="selectBrand" class="select-brand">
+        <div class="select-brand-tip">
+            <span>请选择品牌</span>
+        </div>
+        <div class="empty-product-item-tip" style="display: none;">请选择商品</div>
+    </div>
     <div class="product-brand">
         <div class="clearfix">
             <div class="brand-text">
@@ -145,6 +151,9 @@
 <template id="brandItemTemplate">
     <span id="[[brandItemId]]" class="brand-item">[[text]]</span>
 </template>
+<template id="selectedBrandTemplate">
+    <span data-id="[[selectedBrandItemId]]">[[selectedBrandItemName]]</span>
+</template>
 
 <script>
     !function () {
@@ -157,7 +166,7 @@
         var productManage = new ProductManage($productContainer, $searchCondition);
 
         // 品牌回调
-        /*productManage.brandCallback(function (id, text) {
+        productManage.brandCallback(function (id, text) {
             var i, brandItems = [];
             for (i = 0; i < 40; i++) {
                 brandItems.push({
@@ -166,7 +175,7 @@
                 })
             }
             return brandItems;
-        });*/
+        });
 
         /*productManage.addListener('close', function (productInfo) {
             console.log(productInfo);

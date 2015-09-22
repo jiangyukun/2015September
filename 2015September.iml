@@ -9,18 +9,12 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="JRebel" name="JRebel">
       <configuration>
         <option name="autosync" value="false" />
         <option name="deleteUnindexed" value="true" />
-        <option name="httpAuthEnabled" value="false" />
-        <option name="httpPassword" value="" />
-        <option name="httpUsername" value="" />
         <option name="manualXML" value="false" />
         <option name="masterModuleName" />
         <option name="remotingEnabled" value="false" />
@@ -31,7 +25,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">

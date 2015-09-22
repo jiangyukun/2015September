@@ -74,7 +74,7 @@ ul li a.hover {
 
 .item-container {
     display: inline-block;
-    margin-left: 30px;
+    /*margin-left: 30px;*/
     padding: 10px;
 }
 
@@ -108,7 +108,7 @@ ul li a.hover {
 
 .item-container {
     display: inline-block;
-    width: 750px;
+    /*width: 750px;*/
 }
 
 .search-container-item {
@@ -197,11 +197,32 @@ dd {
     height: 14px;
 }
 
+.select-brand-tip {
+    margin-top: 10px;
+    width: 300px;
+    border: 1px solid #aaa;
+    padding: 7px 30px;
+    height: 35px;
+    font-size: 17px;
+    display: inline-block;
+}
+
+.select-brand-tip span {
+    cursor: pointer;
+}
+
+.empty-product-item-tip {
+    display: inline-block;
+    color: red;
+    cursor: pointer;
+}
+
 .product-brand {
     margin: 10px 0;
     border: 1px solid #ddd;
     padding: 10px;
     display: none;
+
 }
 
 .brand-text, .brand-items {
