@@ -7,8 +7,8 @@
 <body>
 
 <script>
-    function extend(Parent, Child) {
-        Child.prototype.__proto__ = new Parent();
+    function extend(Child, Parent) {
+        Child.prototype = Parent.prototype;
     }
 </script>
 
@@ -17,24 +17,25 @@
     function A() {
         this.a1 = 'a1';
     }
-    A.prototype.a = function () {
-        console.log('a');
+    A.prototype.c = function () {
+        console.log('a_c');
     };
     function B() {
     }
     B.prototype.a = function () {
-
+        console.log('b_a');
     };
     B.prototype.b = function () {
-
+        console.log('b_b');
     };
 
-    extend(A, B);
+    extend(B, A);
 
     var b = new B();
     console.log(b);
-    console.log(b.a);
-    console.log(b.b);
+    b.a();
+    b.b();
+    b.c();
 
 </script>
 </body>

@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charsetGB2312"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+    <title>定期理财regular</title>
+    <link rel="stylesheet" type="text/css" href="H5.css"/>
+</head>
+<body style="background:#F8F8F8;">
+<section class="z_headList">
+    <ul>
+        <li>
+            昨日收益（元）<span>暂无收益</span>
+        </li>
+        <li>
+            历史累计收益<span>0.00元</span>
+        </li>
+        <li>
+            近七日年化收益<span>9%</span>
+        </li>
+        <li>
+            持有金额<span>0.00元</span>
+        </li>
+    </ul>
+    <section class="z_btnfoot">
+        <a href="#" class="z_btnred">购买</a>
+        <a href="#" class="z_btnred1">取出</a>
+    </section>
+</section>
+<section class="z_main">
+    <div class="z_in_tabs clearfix">
+        <ul>
+            <li class="on"><a href="javascript:void(0);">全部</a></li>
+            <li class=""><a href="javascript:void(0);">收益中</a></li>
+            <li class=""><a href="javascript:void(0);">已取出</a></li>
+        </ul>
+    </div>
+    <!--理财详情//start-->
+    <section class="z_in_details clearfix" style="display:block;">
+        <table class="z_investListype">
+            <thead>
+            <tr>
+                <th>产品</th>
+                <th>金额</th>
+                <th>类型</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr class="basetr">
+                <td>全金180</td>
+                <td>6700.00</td>
+                <td>本金</td>
+                <td><a class="z_btnblue z_more">更多</a></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="z_posre z_moretab">
+                    <div class="z_morewarp">
+                        <a class="z_btnblueleft" href="#">续投</a><a class="z_btnblueright" href="#">取出</a>
+                    </div>
+                    <div class="z_moredisplay"></div>
+                </td>
+            </tr>
+
+
+            <tr class="basetr">
+                <td>全金180</td>
+                <td>6700.00</td>
+                <td>本金</td>
+                <td><a class="z_btnblue z_more">更多</a></td>
+            </tr>
+
+            <tr>
+                <td colspan="4" class="z_posre z_moretab" style="display:none;">
+                    <div class="z_morewarp">
+                        <a class="z_btnblueleft" href="#">续投</a><a class="z_btnblueright" href="#">取出</a>
+                    </div>
+                    <div class="z_moredisplay"></div>
+                </td>
+            </tr>
+
+            <tr class="basetr">
+                <td>全金180</td>
+                <td>6700.00</td>
+                <td>本金</td>
+                <td><a class="z_btnblue z_more">更多</a></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="z_posre z_moretab" style="display:none;">
+                    <div class="z_morewarp">
+                        <a class="z_btnblueleft" href="#">续投</a><a class="z_btnblueright" href="#">取出</a>
+                    </div>
+                    <div class="z_moredisplay"></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <!--理财详情//end-->
+
+    <!--投资记录//start-->
+    <section class="z_wrap z_in_details clearfix" style="display:none;">
+        <table class="z_investListype">
+            <thead>
+            <tr>
+                <th>购买时间</th>
+                <th>投资类型</th>
+                <th>购买金额</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2015-08-01 23:00</td>
+                <td>特权本金</td>
+                <td class="z_red">10000</td>
+            </tr>
+            <tr>
+                <td>2015-08-01 23:00</td>
+                <td>特权本金</td>
+                <td class="z_red">10000</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <!--投资记录//end-->
+
+    <!--理财协议//start-->
+    <section class="z_wrap z_in_details clearfix" style="display:none;">
+        <ul class="z_incomelist">
+            <li>
+                <span>￥ 100</span>
+                取出全金宝<br/>
+                2015-09-01 14：23：48
+            </li>
+            <li>
+                <span>￥ 100</span>
+                取出全金宝<br/>
+                2015-09-01 14：23：48
+            </li>
+        </ul>
+    </section>
+    <!--安全保障//end-->
+</section>
+<script src="script/jquery-1.10.2.js"></script>
+
+<script>
+    //tab切换
+    $(".z_in_tabs li").click(function () {
+        var $this = $(this),
+                index = $this.index();
+        $this.addClass('on').siblings().removeClass('on');
+        $(".z_in_details").eq(index).show().siblings(".z_in_details").hide();
+    });
+
+    //点击显示
+    $(".z_more").click(function () {
+        var $this = $(this),
+                indexs = $this.index();
+        //$this.addClass('on').siblings().removeClass('on');
+        $(".z_moretab").eq(indexs).show().siblings(".z_moretab").hide();
+    });
+    $(".basetr").click(function () {
+        $(".z_moretab").hide();
+    });
+
+    //事件代理
+    $(".z_more").bind("click", function (ev) {
+        var $obj = $(ev.target);
+        //$obj.css("background","red");
+    });
+</script>
+
+</body>
+</html>
+
+
+

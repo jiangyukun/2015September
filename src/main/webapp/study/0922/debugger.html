@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    debugger;
+</script>
+<script>
+    function containsObjectLiteralWithSetter() {
+        return {
+            set prop(val) {
+                this.val = val;
+            }
+        };
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Person() {
+        var age = new Date().getFullYear() - 18;
+        Object.defineProperty(this, "age", {
+            get: function () {
+                alert("内部存储数据为:" + age);
+                return new Date().getFullYear() - age;
+            },
+            set: function (value) {
+                console.log(1);
+                age = value;
+            }
+        });
+    }
+    var p = new Person();
+    p.age = 1994;
+//    alert("外部获取到的数据为:" + p.age);
+</script>
+</body>
+</html>
