@@ -56,13 +56,14 @@ ul li a.hover {
     right: 0;
     top: 20px;
     z-index: -1;
-    transition: top .2s;
+    /*transition: top .2s;*/
 }
 
 .product-container {
     width: 1000px;
-    margin: 50px 50px 50px 100px;
+    margin: 100px 50px 50px 100px;
     font-size: 15px;
+    position: relative;;
 }
 
 .search-condition, .select-brand {
@@ -118,14 +119,20 @@ ul li a.hover {
 
 .search-menu-list {
     width: 100%;
-    top: 5px;
-    position: relative;
-    border: 1px solid #ddd;
+    top: 40px;
+    position: absolute;
     display: none;
+    background: white;
 }
 
 #category_menu_list, .content {
+    border: 1px solid #ddd;
+    min-height: 250px;
     float: left;
+}
+
+#category_menu_list {
+    border-right: 0;
 }
 
 .sub-content {
@@ -219,6 +226,9 @@ dd {
     border: 1px solid #ddd;
     padding: 10px;
     display: none;
+    position: absolute;
+    background: white;
+    top: 76px;
 }
 
 .brand-text, .brand-items {

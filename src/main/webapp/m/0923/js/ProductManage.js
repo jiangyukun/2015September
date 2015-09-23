@@ -29,9 +29,7 @@ ProductManage.prototype = {
 
         this.$btnArea.click(function () {
             self.changeState();
-        });
-        this.$container.find('.close-container').click(function () {
-            self.close();
+            return false;
         });
         this.$selectBrandArea.click(function () {
             var item = self.searchBox.item, brandItems;
@@ -68,6 +66,14 @@ ProductManage.prototype = {
                 self.$selectBrandBtn.hide();
             }
         });
+        this.$allCategory.click(function () {
+            return false;
+        });
+        $('html').click(function () {
+            if (self.opened) {
+                self.close();
+            }
+        });
     },
     // open, close, brand, all
     addListener: function (type, listener) {
@@ -90,17 +96,16 @@ ProductManage.prototype = {
         }
     },
     close: function () {
-        var self = this;
-        self.opened = false;
-        self.$allCategory.hide();
-
-        self.triggerListener('close');
+        this.opened = false;
+        this.$allCategory.hide();
+        this.triggerListener('close');
     },
     open: function () {
-        var self = this;
-        self.opened = true;
-        self.triggerListener('open');
-        self.$allCategory.show();
+        this.opened = true;
+        this.$emptyProductTip.hide();
+        this.triggerListener('open');
+        this.$allCategory.show();
+        this.brand.hide();
     },
     changeState: function () {
         if (this.opened) {
