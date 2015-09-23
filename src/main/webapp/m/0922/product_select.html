@@ -24,6 +24,7 @@
         <div class="item-container">
             <span class="addTip">点此添加商品名称</span>
         </div>
+        <div class="empty-product-item-tip" style="display: none;">*请先选择商品品种</div>
     </div>
     <div class="search-menu-list clearfix">
         <div class="close-container">
@@ -123,7 +124,6 @@
         <div class="select-brand-tip">
             <span>请选择品牌</span>
         </div>
-        <div class="empty-product-item-tip" style="display: none;">请选择商品</div>
     </div>
     <div class="product-brand">
         <div class="clearfix">
@@ -132,15 +132,11 @@
                 <label class="colonArea">：</label>
             </div>
             <div class="brand-items">
-                <div id="brand-item-all" class="brand-item">全部</div>
+                <!--<div id="brand-item-all" class="brand-item">全部</div>-->
             </div>
             <span class="brand-more">
                 更多<span class="glyphicon glyphicon-chevron-down"></span>
             </span>
-        </div>
-
-        <div class="brand-confirm-btn">
-            <button class="btn">确定</button>
         </div>
     </div>
 </div>
@@ -178,12 +174,12 @@
         });
 
         /*productManage.addListener('close', function (productInfo) {
-            console.log(productInfo);
-        });
+         console.log(productInfo);
+         });
 
-        productManage.addListener('brand', function (productInfo) {
-            console.log(productInfo);
-        });*/
+         productManage.addListener('brand', function (productInfo) {
+         console.log(productInfo);
+         });*/
     }();
 </script>
 </body>

@@ -13,7 +13,6 @@ function SearchBox($container, productManage) {
 SearchBox.prototype = {
     constructor: SearchBox,
     init: function () {
-
     },
     addItem: function (item) {
         var self = this;
@@ -26,9 +25,6 @@ SearchBox.prototype = {
             text: item.text
         }));
         var $item = this.$appendContainer.find('#' + item._internalId);
-        $item.click(function () {
-            self.productManage.changeState();
-        });
         this.item = item;
         this.trigger();
     },

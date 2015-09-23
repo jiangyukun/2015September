@@ -65,22 +65,22 @@ ul li a.hover {
     font-size: 15px;
 }
 
-.search-condition {
+.search-condition, .select-brand {
+    /*display: inline-block;*/
     height: 40px;
-    width: 300px;
-    border: 1px dotted orange;
     padding: 0 10px;
 }
 
 .item-container {
     display: inline-block;
-    /*margin-left: 30px;*/
+    border: 1px dotted orange;
     padding: 10px;
 }
 
 .addTip, .product-item {
     padding: 10px;
-    font-size: 17px;
+    font-size: 16px;
+    color: grey;
 }
 
 .small-category-container {
@@ -108,7 +108,7 @@ ul li a.hover {
 
 .item-container {
     display: inline-block;
-    /*width: 750px;*/
+    width: 200px;
 }
 
 .search-container-item {
@@ -161,7 +161,7 @@ dd {
     font-size: 14px;
 }
 
-.item, .search-remove, .product-item, .close-container, .search-container-item, .clickable {
+.item-container, .item, .search-remove, .product-item, .close-container, .search-container-item, .select-brand-tip, .clickable {
     cursor: pointer;
 }
 
@@ -199,16 +199,13 @@ dd {
 
 .select-brand-tip {
     margin-top: 10px;
-    width: 300px;
+    width: 200px;
     border: 1px solid #aaa;
-    padding: 7px 30px;
+    padding: 9px 20px;
     height: 35px;
-    font-size: 17px;
+    font-size: 16px;
     display: inline-block;
-}
-
-.select-brand-tip span {
-    cursor: pointer;
+    color: grey;
 }
 
 .empty-product-item-tip {
@@ -222,7 +219,6 @@ dd {
     border: 1px solid #ddd;
     padding: 10px;
     display: none;
-
 }
 
 .brand-text, .brand-items {

@@ -2,13 +2,12 @@ function Brand($container, productManage) {
     this.$container = $container;
     this.productManage = productManage;
     this.$brandItems = this.$container.find('.brand-items');
-    this.$brandItemAll = this.$brandItems.find('#brand-item-all');
     this.$more = this.$container.find('.brand-more');
-    this.$confirmBtn = this.$container.find('.brand-confirm-btn .btn');
 
     this._brandItemTemplate = _.template($('#brandItemTemplate').html());
+
+    this.isOpened = false;
     this.brandItemList = [];
-    this.brandItemAll = new BrandItem(this.$brandItemAll.attr('id'), this.$brandItemAll.text(), 'all', this);
     this.current = null;
     this.currentSelectedBrand = null;
     this.listenerList = [];
@@ -19,7 +18,6 @@ Brand.prototype = {
     constructor: Brand,
     init: function () {
         var i, self = this;
-        self.brandItemList.push(this.brandItemAll);
         this.$more.click(function () {
             for (i = self.current; i < self.brandItems.length; i++) {
                 var brandItem = self.brandItems[i];
@@ -31,29 +29,28 @@ Brand.prototype = {
             }
             self.$more.hide();
         });
-        this.$confirmBtn.click(function () {
-            for (i = 0; i < self.listenerList.length; i++) {
-                var listener = self.listenerList[i];
-                listener(self.currentSelectedBrand);
-            }
-            self.hide();
-        });
     },
     addListener: function (listener) {
         this.listenerList.push(listener);
     },
     reset: function () {
-        this.$container.hide();
+        this.hide();
         this.$more.hide();
-        this.brandItemAll.reset();
         this.brandItemList = [];
-        this.brandItemList.push(this.brandItemAll);
-        this.$brandItems.children(':not(:first)').remove();
+        this.$brandItems.children().remove();
+    },
+    select: function () {
+        var i;
+        for (i = 0; i < this.listenerList.length; i++) {
+            var listener = this.listenerList[i];
+            listener(this.currentSelectedBrand);
+        }
+        this.hide();
     },
     refreshBrand: function (brandItems) {
         var i, top = null, row = 0;
         this.reset();
-        this.$container.show();
+        this.show();
         this.brandItems = brandItems;
 
         for (i = 0; i < brandItems.length; i++) {
@@ -75,9 +72,11 @@ Brand.prototype = {
         }
     },
     show: function () {
+        this.isOpened = true;
         this.$container.show();
     },
     hide: function () {
+        this.isOpened = false;
         this.$container.hide();
     },
     getSelectedBrand: function () {

@@ -27,6 +27,7 @@ BrandItem.prototype = {
                 self.$brandItem.addClass(self.className);
             }
             self.isSelected = !self.isSelected;
+            self.brand.select();
         });
     },
     reset: function () {

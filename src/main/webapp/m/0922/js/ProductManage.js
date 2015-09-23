@@ -2,7 +2,7 @@ function ProductManage($productContainer, $searchCondition) {
     this.$container = $productContainer;
     this.$allCategory = this.$container.find('.search-menu-list');
     this.$content = this.$container.find('.content');
-    this.$btnArea = this.$container.find('.addTip');
+    this.$btnArea = this.$container.find('.item-container');
     this.$selectBrandArea = this.$container.find('.select-brand-tip');
     this.$selectBrandBtn = this.$container.find('.select-brand-tip span');
     this.$emptyProductTip = this.$container.find('.empty-product-item-tip');
@@ -33,14 +33,18 @@ ProductManage.prototype = {
         this.$container.find('.close-container').click(function () {
             self.close();
         });
-        this.$selectBrandBtn.click(function () {
-            var item = self.searchBox.item;
+        this.$selectBrandArea.click(function () {
+            var item = self.searchBox.item, brandItems;
             if (!item) {
                 self.$emptyProductTip.show();
             } else {
-                self.$emptyProductTip.hide();
-                var brandItems = self._brandCallback(item.id, item.text);
-                self.brand.refreshBrand(brandItems);
+                if (self.brand.isOpened) {
+                    self.brand.hide();
+                } else {
+                    self.$emptyProductTip.hide();
+                    brandItems = self._brandCallback(item.id, item.text);
+                    self.brand.refreshBrand(brandItems);
+                }
             }
         });
         this.$emptyProductTip.click(function () {
