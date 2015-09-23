@@ -80,12 +80,6 @@ Brand.prototype = {
         this.$container.hide();
     },
     getSelectedBrand: function () {
-        var brandList = [];
-        $.each(this.brandItemList, function (index, brandItem) {
-            if (brandItem.isSelected) {
-                brandList.push(brandItem.id);
-            }
-        });
-        return brandList;
+        return this.currentSelectedBrand ? this.currentSelectedBrand.id : null;
     }
 };

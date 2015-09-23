@@ -51,6 +51,6 @@ SearchBox.prototype = {
         }
     },
     getSelectedProduct: function () {
-        return this.item.id;
+        return this.item ? this.item.id : null;
     }
 };

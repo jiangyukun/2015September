@@ -64,6 +64,7 @@ ProductManage.prototype = {
                 self.$selectBrandArea.find(':not(:first)').remove();
                 self.$selectBrandArea.append(brandItemHtml);
                 self.$selectBrandBtn.hide();
+                self.triggerListener('brand');
             }
         });
         this.$allCategory.click(function () {
@@ -77,10 +78,6 @@ ProductManage.prototype = {
     },
     // open, close, brand, all
     addListener: function (type, listener) {
-        if (type === 'brand') {
-            this.brand.addListener(listener);
-            return;
-        }
         this.listenerList.push({
             type: type,
             callback: listener

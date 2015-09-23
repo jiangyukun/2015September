@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>product</title>
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="js/lib/jquery.js"></script>
@@ -136,7 +137,11 @@
             </span>
         </div>
     </div>
+
+    <!-- 测试按钮 -->
+    <button id="get" class="btn btn-info" style="margin-top: 50px;">get</button>
 </div>
+
 
 <template id="itemTemplate">
     <span id="[[itemId]]" class="product-item">[[text]]</span>
@@ -170,13 +175,13 @@
             return brandItems;
         });
 
-        /*productManage.addListener('close', function (productInfo) {
-         console.log(productInfo);
-         });
-
-         productManage.addListener('brand', function (productInfo) {
-         console.log(productInfo);
-         });*/
+        productManage.addListener('brand', function (productInfo) {
+            console.log(productInfo);
+        });
+        $('#get').click(function () {
+            var productInfo = productManage.getProductInfo();
+            console.log(productInfo);
+        });
     }();
 </script>
 </body>
