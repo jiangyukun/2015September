@@ -65,22 +65,31 @@ ul li a.hover {
     position: relative;;
 }
 
-.search-condition, .select-brand {
-    /*display: inline-block;*/
-    height: 40px;
-    /*padding: 0 10px;*/
-}
-
-.item-container {
+.search-condition {
     display: inline-block;
     border: 1px dotted orange;
+    padding: 0 10px;
+    min-width: 250px;
+}
+
+.btn-tip {
+    display: inline-block;
+    margin: 0 30px;
     padding: 10px;
 }
 
-.addTip, .product-item {
+.addTip {
     padding: 10px;
-    font-size: 16px;
-    color: grey;
+    font-size: 17px;
+}
+
+#selectedProducts {
+    display: none;
+}
+
+.reelect {
+    margin: 8px;
+    font-weight: bold;
 }
 
 .small-category-container {
@@ -108,7 +117,7 @@ ul li a.hover {
 
 .item-container {
     display: inline-block;
-    width: 200px;
+    max-width: 750px;
 }
 
 .search-container-item {
@@ -118,8 +127,8 @@ ul li a.hover {
 
 .search-menu-list {
     width: 100%;
-    top: 40px;
-    position: absolute;
+    top: 3px;
+    position: relative;
     display: none;
     background: white;
 }
@@ -167,7 +176,7 @@ dd {
     font-size: 14px;
 }
 
-.item-container, .item, .search-remove, .product-item, .close-container, .search-container-item, .select-brand-tip, .clickable {
+.reelect, .item, .search-remove, .close-container, .search-container-item, .clickable {
     cursor: pointer;
 }
 
@@ -188,12 +197,6 @@ dd {
     cursor: auto;
 }
 
-.plus {
-    width: 17px;
-    height: 17px;
-    margin-top: -5px;
-}
-
 .confirm-btn {
     color: green;
 }
@@ -203,31 +206,11 @@ dd {
     height: 14px;
 }
 
-.select-brand-tip {
-    margin-top: 10px;
-    width: 200px;
-    border: 1px solid #aaa;
-    padding: 9px 20px;
-    height: 35px;
-    font-size: 16px;
-    display: inline-block;
-    color: grey;
-}
-
-.empty-product-item-tip {
-    display: inline-block;
-    color: red;
-    cursor: pointer;
-}
-
 .product-brand {
     margin: 10px 0;
     border: 1px solid #ddd;
     padding: 10px;
     display: none;
-    position: absolute;
-    background: white;
-    top: 76px;
 }
 
 .brand-text, .brand-items {
