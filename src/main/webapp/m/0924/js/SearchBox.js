@@ -39,7 +39,6 @@ _.extend(SearchBox.prototype, Backbone.Events, {
             $itemContainer: $container.find('.item-container')
         };
         this.smallCategoryList.push(localSmallCategory);
-        this.trigger('productSelected');
         return localSmallCategory;
     },
     addSmallCategoryItem: function (smallCategory, item) {
@@ -56,6 +55,7 @@ _.extend(SearchBox.prototype, Backbone.Events, {
             self.itemClick(localSmallCategory, item);
             return false;
         });
+        this.trigger('productSelected');
     },
     removeSmallCategory: function (smallCategoryId) {
         var self = this;
@@ -88,6 +88,7 @@ _.extend(SearchBox.prototype, Backbone.Events, {
         if (emptySmallCategory) {
             self.removeSmallCategory(smallCategoryId);
         }
+        this.trigger('productDeSelected');
     },
     itemClick: function (localSmallCategory, item) {
         var i, j, self = this, brandItems, itemId = item.id, itemText = item.text;

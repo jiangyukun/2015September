@@ -4,7 +4,7 @@ function Brand($container, productManage) {
     this.$brandItems = this.$container.find('.brand-items');
     this.$brandItemAll = this.$brandItems.find('#brand-item-all');
     this.$more = this.$container.find('.brand-more');
-    this.$confirmBtn = this.$container.find('.brand-confirm-btn .btn');
+    this.$confirmBtn = this.$container.find('#brandConfirm');
 
     this._brandItemTemplate = _.template($('#brandItemTemplate').text());
     this.brandItemList = [];
@@ -27,6 +27,12 @@ _.extend(Brand.prototype, Backbone.Events, {
                 self.brandItemList.push(new BrandItem(brandItem.id, brandItem.text, 'item', self));
             }
             self.$more.hide();
+        });
+        this.$confirmBtn.mousedown(function () {
+            self.$confirmBtn.addClass('btn-clicked');
+        });
+        this.$confirmBtn.mouseup(function () {
+            self.$confirmBtn.removeClass('btn-clicked');
         });
         this.$confirmBtn.click(function () {
             self.trigger('selectBrand', self.productManage.getProductInfo())

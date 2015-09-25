@@ -26,14 +26,13 @@
         <div class="btn-tip">
             <span class="addTip">点此添加商品名称</span>
         </div>
-        <div id="selectedProducts">
+        <div id="selectedProducts" class="clearfix">
             <div class="pull-left reelect">
-                <span id="selectCaption">确定</span><span>：</span>
+                <span id="selectCaption" class="glyphicon reelect-icon-color"></span>
             </div>
             <div id="smallCategoryContainer" class="pull-left"></div>
         </div>
     </div>
-    <div class="small-category-container"></div>
     <div class="search-menu-list clearfix">
         <div class="close-container">
             <span class="confirm-btn">确定</span>
@@ -135,7 +134,7 @@
                 <label class="colonArea">：</label>
             </div>
             <div class="brand-items">
-                <div id="brand-item-all" class="brand-item">全部</div>
+                <div id="brand-item-all" class="brand-item brand-item-clicked">全部</div>
             </div>
             <span class="brand-more">
                 更多<span class="glyphicon glyphicon-chevron-down"></span>
@@ -143,11 +142,10 @@
         </div>
 
         <div class="brand-confirm-btn">
-            <button class="btn">确定</button>
+            <button id="brandConfirm" class="btn">确定</button>
         </div>
     </div>
 </div>
-
 
 <script id="itemTemplate" type="text/template">
     <span id="[[itemId]]" class="search-container-item">[[text]]</span>

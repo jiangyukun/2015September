@@ -74,7 +74,7 @@ ul li a.hover {
 
 .btn-tip {
     display: inline-block;
-    margin: 0 30px;
+    margin: 0 10px;
     padding: 10px;
 }
 
@@ -85,11 +85,15 @@ ul li a.hover {
 
 #selectedProducts {
     display: none;
+    margin: 2px 10px;
 }
 
 .reelect {
     margin: 8px;
-    font-weight: bold;
+}
+
+.reelect-icon-color {
+    color: #22B14C;
 }
 
 .small-category-container {
@@ -127,8 +131,8 @@ ul li a.hover {
 
 .search-menu-list {
     width: 100%;
-    top: 3px;
-    position: relative;
+    top: 42px;
+    position: absolute;
     display: none;
     background: white;
 }
@@ -253,4 +257,9 @@ dd {
     color: #fff;
     background-color: #23b14d;
     padding: 2px 8px;
+}
+
+.brand-confirm-btn .btn-clicked {
+    color: white;
+    background-color: grey
 }

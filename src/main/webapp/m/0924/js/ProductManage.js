@@ -2,6 +2,7 @@ function ProductManage($productContainer, $searchCondition) {
     this.$container = $productContainer;
     this.$allCategory = this.$container.find('.search-menu-list');
     this.$content = this.$container.find('.content');
+    this.$searchContainer = this.$container.find('.search-condition');
     this.$btnArea = this.$container.find('.btn-tip');
     this.$selectedProductArea = this.$container.find('#selectedProducts');
     this.$selectCaption = this.$selectedProductArea.find('#selectCaption');
@@ -20,10 +21,13 @@ ProductManage.prototype = {
     init: function () {
         var self = this;
 
-        new AllCategory(this.$allCategory.find('ul'), this.$allCategory.find('.content'), this);
-        this.$allCategory.hide();
-        this.$allCategory.find('.content').find('.sub-content:not(:first)').hide();
-        this.$btnArea.click(function () {
+        var autoAdjustProductSelect = function () {
+            self.$allCategory.css({
+                top: self.$searchContainer.outerHeight(true) + 3
+            });
+        };
+        new AllCategory(this.$allCategory, this);
+        this.$searchContainer.click(function () {
             if (self.opened) {
                 self.close();
                 return;
@@ -41,10 +45,15 @@ ProductManage.prototype = {
         this.searchBox.on('productSelected', function () {
             self.$btnArea.hide();
             self.$selectedProductArea.show();
+            autoAdjustProductSelect();
+        });
+        this.searchBox.on('productDeSelected', function () {
+            autoAdjustProductSelect();
         });
         this.searchBox.on('productIsEmpty', function () {
             self.$btnArea.show();
             self.$selectedProductArea.hide();
+            autoAdjustProductSelect();
         });
         this.$allCategory.click(function () {
             return false;
@@ -57,7 +66,7 @@ ProductManage.prototype = {
     },
     // open, close, brand, all
     addListener: function (type, listener) {
-        if (type === 'selectBrand') {
+        if (type === 'brand') {
             this.brand.on('selectBrand', listener);
             return;
         }
@@ -83,14 +92,14 @@ ProductManage.prototype = {
         } else {
             this.brand.reset();
         }
-        this.$selectCaption.text('重选');
+        this.$selectCaption.removeClass('glyphicon-remove').addClass('glyphicon-plus');
         this.triggerListener('close');
     },
     open: function () {
         this.opened = true;
         this.brand.hide();
         this.$allCategory.show();
-        this.$selectCaption.text('确定');
+        this.$selectCaption.removeClass('glyphicon-plus').addClass('glyphicon-remove');
         this.triggerListener('open');
     },
     changeState: function () {
