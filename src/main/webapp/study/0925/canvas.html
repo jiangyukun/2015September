@@ -2,17 +2,46 @@
 <head>
     <meta charset="utf-8"/>
     <title>3D cube HTML5 canvas realization</title>
-    <script type="text/javascript">
+
+    <style type="text/css">
+        canvas {
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<h1>3D cube HTML5 canvas realization on 2D contex</h1>
+
+<p>Features:</p>
+<ul>
+    <li>3D operations: rotating, moving object center</li>
+    <li>Direct illumination</li>
+    <li>Highlighting edges</li>
+    <li>Optimizations:
+        <ul>
+            <li>Skip outputting of invisible polygons</li>
+            <li>Skip processing of duplicated points</li>
+        </ul>
+    </li>
+</ul>
+<canvas id="3Dcube" width="400" height="225"></canvas>
+
+<script type="text/javascript">
+    +function () {
+        'use strict';
+
         function Color(r, g, b, a) {
             this.r = r;
             this.g = g;
             this.b = b;
             this.a = a;
         }
+
         function Point2D(x, y) {
             this.x = x;
             this.y = y;
         }
+
         Point2D.prototype.move = function (p2D) {
             this.x += p2D.x;
             this.y += p2D.y;
@@ -22,6 +51,7 @@
             this.y = y;
             this.z = z;
         }
+
         Point3D.prototype.move = function (p3D) {
             this.x += p3D.x;
             this.y += p3D.y;
@@ -33,44 +63,40 @@
             this.z = p3D.z;
         };
         Point3D.prototype.rotate = function (axis, angleGr) {
-            angleRad = angleGr * Math.PI / 180;
+            var angleRad = angleGr * Math.PI / 180;
+            var tempPoint;
             switch (axis) {
                 case "x":
-                {
-                    var tempPoint = new Point3D(
+                    tempPoint = new Point3D(
                             this.x,
                             this.y * Math.cos(angleRad) - this.z * Math.sin(angleRad),
                             this.y * Math.sin(angleRad) + this.z * Math.cos(angleRad)
                     );
                     this.swap(tempPoint);
                     break;
-                }
                 case "y":
-                {
-                    var tempPoint = new Point3D(
+                    tempPoint = new Point3D(
                             this.x * Math.cos(angleRad) + this.z * Math.sin(angleRad),
                             this.y,
                             -this.x * Math.sin(angleRad) + this.z * Math.cos(angleRad)
                     );
                     this.swap(tempPoint);
                     break;
-                }
                 case "z":
-                {
-                    var tempPoint = new Point3D(
+                    tempPoint = new Point3D(
                             this.x * Math.cos(angleRad) - this.y * Math.sin(angleRad),
                             this.x * Math.sin(angleRad) + this.y * Math.cos(angleRad),
                             this.z
                     );
                     this.swap(tempPoint);
                     break;
-                }
             }
         };
         function Normal3D(p3D, length) {
             this.point = p3D;
             this.length = length;
         }
+
         function Poly() {
             var points = [];
             for (var i = 0; i < arguments.length; i++)
@@ -83,6 +109,7 @@
             var normalLen = Math.sqrt(normalP3D.x * normalP3D.x + normalP3D.y * normalP3D.y + normalP3D.z * normalP3D.z);
             this.normal = new Normal3D(normalP3D, normalLen);
         }
+
         Poly.prototype.move = function (p3D) {
             for (var i = 0; i < this.points.length; i++) {
                 var point = this.points[i];
@@ -99,6 +126,7 @@
         };
         Poly.prototype.put = function (center, fillColor, edgeColor) {
             // Calulate visibility
+            var i, point;
             var normalAngleRad = Math.acos(this.normal.point.z / this.normal.length);
             if (normalAngleRad / Math.PI * 180 >= 90)
                 return;
@@ -106,8 +134,8 @@
             ctx.fillStyle = 'rgba(' + fillColor.r + ',' + fillColor.g + ',' + fillColor.b + ',' +
                     (fillColor.a * lightIntensity) + ')';
             ctx.beginPath();
-            for (var i = 0; i < this.points.length; i++) {
-                var point = this.points[i];
+            for (i = 0; i < this.points.length; i++) {
+                point = this.points[i];
                 if (i)
                     ctx.lineTo(center.x + parseInt(point.x), center.y - parseInt(point.y));
                 else
@@ -118,10 +146,10 @@
             ctx.strokeStyle = 'rgba(' + edgeColor.r + ',' + edgeColor.g + ',' + edgeColor.b + ',' +
                     (edgeColor.a * lightIntensity) + ')';
             ctx.beginPath();
-            var point = this.points[this.points.length - 1];
+            point = this.points[this.points.length - 1];
             ctx.moveTo(center.x + parseInt(point.x), center.y - parseInt(point.y));
-            for (var i = 0; i < this.points.length; i++) {
-                var point = this.points[i];
+            for (i = 0; i < this.points.length; i++) {
+                point = this.points[i];
                 ctx.lineTo(center.x + parseInt(point.x), center.y - parseInt(point.y));
             }
             ctx.stroke();
@@ -159,30 +187,36 @@
             this.fillColor = fillColor;
             this.edgeColor = edgeColor;
         }
+
         function move(o3D, p3D) {
             for (var i = 0; i < o3D.points.length - o3D.polys.length; i++) {
                 var point = o3D.points[i];
                 point.move(p3D);
             }
         }
+
         function put(o3D, center) {
             for (var i = 0; i < o3D.polys.length; i++) {
                 var poly = o3D.polys[i];
                 poly.put(center, o3D.fillColor, o3D.edgeColor);
             }
         }
+
         function rotate(o3D, axis, angle) {
             for (var i = 0; i < o3D.points.length; i++) {
                 var point = o3D.points[i];
                 point.rotate(axis, angle);
             }
         }
+
+        var canvas, ctx, cube, centerScreen;
+
         function init() {
             canvas = document.getElementById('3Dcube');
             if (canvas.getContext) {
                 ctx = canvas.getContext('2d');
                 ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height); // clear canvas
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
                 cube = new Cube(100, new Color(50, 50, 200, 1), new Color(60, 60, 210, 1));
                 move(cube, new Point3D(-50, -50, -50));
                 rotate(cube, 'x', 45);
@@ -191,12 +225,13 @@
 
                 centerScreen = new Point2D(canvas.width / 2, canvas.height / 2);
                 put(cube, centerScreen);
-                timer = setInterval(nextFrame, 1000 / 60);
+                setInterval(nextFrame, 1000 / 60);
             }
         }
+
         function nextFrame() {
             ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);  // clear canvas
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             rotate(cube, 'x', 0.4);
             rotate(cube, 'y', 0.6);
             rotate(cube, 'z', 0.3);
@@ -204,28 +239,9 @@
             ctx.strokeStyle = 'rgba(60, 60, 210, 1)';
             put(cube, centerScreen);
         }
-    </script>
-    <style type="text/css">
-        canvas {
-            border: 0;
-        }
-    </style>
-</head>
-<body onload="init();">
-<h1>3D cube HTML5 canvas realization on 2D contex</h1>
 
-<p>Features:</p>
-<ul>
-    <li>3D operations: rotating, moving object center</li>
-    <li>Direct illumination</li>
-    <li>Highlighting edges</li>
-    <li>Optimizations:
-        <ul>
-            <li>Skip outputting of invisible polygons</li>
-            <li>Skip processing of duplicated points</li>
-        </ul>
-    </li>
-</ul>
-<canvas id="3Dcube" width="400" height="225"></canvas>
+        init();
+    }();
+</script>
 </body>
 </html>
