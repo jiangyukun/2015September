@@ -1,0 +1,77 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>APP轮播</title>
+    <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+    <!-- <script src="js/jq.Slide.js" type="text/javascript"></script> -->
+    <script src="js/jquery.slides.min.js" type="text/javascript"></script>
+    <style>
+        .page {
+            margin: 0 100px;
+            width: 400px;
+            height: 400px;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+
+        .banner_slide, .slides_container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .z_img {
+            -webkit-transform: rotateY(-360deg) scale(.8);
+            transform: rotateY(-360deg) scale(.8);
+            -webkit-transition: All .8s ease-in-out;
+            transition: All .8s ease-in-out;
+            position: relative;
+        }
+
+        .z_img2:hover, .z_img2:focus {
+            -webkit-transform: rotateY(-360deg) scale(.8);
+            transform: rotateY(-360deg) scale(.8);
+            -webkit-transition: All .8s ease-in-out;
+            transition: All .8s ease-in-out;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div class="banner">
+    <div class="banner_slide">
+        <div class="slides_container">
+            <div class="page"><a target="_blank" href="javascript:void(0);"><img title="pic1" src="img/1.jpg"/></a>
+            </div>
+            <div class="page"><a target="_blank" href="javascript:void(0);"><img title="pic2" src="img/2.jpg"/></a>
+            </div>
+            <div class="page"><a target="_blank" href="javascript:void(0);"><img title="pic3" src="img/3.jpg"/></a>
+            </div>
+            <div class="page"><a target="_blank" href="javascript:void(0);"><img title="pic4" src="img/4.jpg"/></a>
+            </div>
+        </div>
+    </div>
+</div>
+<a target="_blank" href="javascript:void(0);"><img title="pic4" src="img/4.jpg" class="z_img2"/></a>
+<script>
+    $(".banner_slide").slides({
+        play: 1000,
+        pause: 3000,
+        generatePagination: false,
+        generatePrevnext: false,
+    });
+    //主banner切换
+    // function bannerWidth(){
+    // var w1 = $(".pagination").outerWidth();
+    // $(".pagination").css('margin-left',-w1/2)
+    // $(".banner_slide .page").css("width",$(window).width());
+    // }
+    // $(window).resize(function(){
+    // bannerWidth();
+    // });
+    // bannerWidth();
+</script>
+</body>
+</html>
