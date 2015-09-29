@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function add(x) {
+        var sum = x;
+        var tmp = function (y) {
+            sum = sum + y;
+            return tmp;
+        };
+        tmp.prototype = {};
+        tmp.toString = tmp.valueOf = function () {
+            return sum;
+        };
+        return tmp;
+    }
+    var sum = add(1)(2)(3)(4);
+    console.log(sum);
+
+</script>
+</body>
+</html>

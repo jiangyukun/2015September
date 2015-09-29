@@ -2,6 +2,8 @@
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/0929/html5-fd-150607105112.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/0929/html5-fd-150607105112_files" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/demo/uniform/.gitignore" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/demo/uniform/Makefile" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/demo/uniform/README.md" charset="GBK" />
@@ -20,6 +22,10 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/h/0907/btn_animation(2).html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/h/0922/H5.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/h/0922/H6.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/h/0929/css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/h/0929/html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/h/0929/image" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/h/0929/script" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0907/css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0907/demand" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0907/js" charset="GBK" />
@@ -51,6 +57,10 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/js/SmallCategory.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0911/product_select.html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/m/0924/js/lib/backbone.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0929/css/uniform.default.min.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0929/images/sprite.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0929/js/lib/backbone.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/m/0929/js/lib/jquery.uniform.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/php/list.blade.php" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/res/css/bootstrap-theme.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/res/css/bootstrap-theme.css.map" charset="GBK" />
