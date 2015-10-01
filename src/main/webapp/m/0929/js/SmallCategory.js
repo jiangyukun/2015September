@@ -5,8 +5,8 @@ function SmallCategory(bigCategory, $dl, productManage) {
     this.productManage = productManage;
 
     this.uuid = this.productManage.uuid();
-    this.text = this.$smallCategory.find('span').text();
 
+    this.$smallCategoryInput = this.$smallCategory.find('input');
     this.itemList = [];
     this.init();
 }
@@ -20,6 +20,11 @@ SmallCategory.prototype = {
             var item = new Item(self, $item, self.searchBox);
             self.itemList.push(item);
         });
+        this.$smallCategoryInput.change(function () {
+            _.each(self.itemList, function (item, index) {
+                item.click();
+            });
+        });
     },
     itemClicked: function (item) {
         if (item.selectable) {
@@ -27,5 +32,10 @@ SmallCategory.prototype = {
         } else {
             this.productManage.removeSmallCategoryItem(this.uuid, item);
         }
+    },
+    remove: function () {
+        _.each(this.itemList, function (item, index) {
+            item.remove();
+        });
     }
 };

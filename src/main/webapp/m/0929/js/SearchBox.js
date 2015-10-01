@@ -2,6 +2,8 @@ function SearchBox($container, productManage) {
     this.$container = $container;
     this.productManage = productManage;
     this.$appendContainer = $('#smallCategoryContainer');
+    this.$selectTip = this.$container.find('#selectTip');
+    this.$reelectBtn = this.$container.find('.reelect-btn');
     this._smallCategoryTemplate = _.template($('#smallCategoryTemplate').text());
     this._itemTemplate = _.template($('#itemTemplate').text());
 
@@ -13,6 +15,13 @@ function SearchBox($container, productManage) {
 
 _.extend(SearchBox.prototype, Backbone.Events, {
     init: function () {
+        var self = this;
+        this.$reelectBtn.click(function () {
+            self.productManage.clickArea = 1;
+            _.each(self.smallCategoryList, function (smallCategory, index) {
+                self.removeSmallCategory(smallCategory.uuid);
+            });
+        });
     },
     brandCallback: function (callback) {
         this._brandCallback = callback;
@@ -28,8 +37,16 @@ _.extend(SearchBox.prototype, Backbone.Events, {
         return sc;
     },
     addSmallCategory: function (smallCategory) {
+        var self = this;
         var uuid = smallCategory.uuid;
         var html = this._smallCategoryTemplate({smallCategoryId: smallCategory.uuid, text: smallCategory.text});
+        if(this.smallCategoryList.length > 0) {
+            _.each(this.smallCategoryList, function (smallCategory, index) {
+                self.removeSmallCategory(smallCategory.uuid);
+                self.trigger('smallCategoryChanged');
+            });
+            self.$selectTip.find('.tip2').show();
+        }
         this.$appendContainer.append(html);
         var $container = this.$appendContainer.find('#' + uuid);
         var localSmallCategory = {
@@ -55,6 +72,7 @@ _.extend(SearchBox.prototype, Backbone.Events, {
             self.itemClick(localSmallCategory, item);
             return false;
         });
+        this.$reelectBtn.show();
         this.trigger('productSelected');
     },
     removeSmallCategory: function (smallCategoryId) {
@@ -66,6 +84,7 @@ _.extend(SearchBox.prototype, Backbone.Events, {
         });
         this.smallCategoryList = arrayUtil.removeElement(self.smallCategoryList, smallCategory);
         if (this.smallCategoryList.length == 0) {
+            this.$reelectBtn.hide();
             this.trigger('productIsEmpty');
         }
     },

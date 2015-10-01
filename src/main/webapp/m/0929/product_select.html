@@ -28,11 +28,21 @@
         <div class="btn-tip">
             <span class="addTip">点此添加商品名称</span>
         </div>
-        <div id="selectedProducts" class="clearfix">
-            <div class="pull-left reelect">
-                <span id="selectCaption" class="glyphicon reelect-icon-color"></span>
+        <div id="selectedProducts">
+            <div class="clearfix">
+                <div class="pull-left reelect">
+                    <span id="selectCaption" class="glyphicon reelect-icon-color"></span>
+                </div>
+                <div id="smallCategoryContainer" class="pull-left"></div>
             </div>
-            <div id="smallCategoryContainer" class="pull-left"></div>
+
+            <div class="product-select-tip clearfix">
+                <button class="reelect-btn pull-left" style="display: none">重选</button>
+                <div id="selectTip" class="pull-right icon-color-tip">
+                    <span class="tip1" style="display: none">请点击<span class="glyphicon glyphicon-plus icon-color-plus"></span>重新选择商品种类，点击商品品种进一步选择品牌</span>
+                    <span class="tip2" style="display: none">每次只能选择一个大类中的商品种类</span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="search-menu-list clearfix">

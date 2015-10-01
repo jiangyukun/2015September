@@ -14,14 +14,17 @@ Item.prototype = {
     init: function () {
         var self = this;
         this.$item.click(function () {
-            if (self.selectable) {
-                self.$item.find('span').addClass('selected');
-            }
-            self.secondSetFlag = true;
-            self.smallCategory.itemClicked(self);
-            self.secondSetFlag = false;
-            self.selectable = !self.selectable;
+            self.click();
         });
+    },
+    click: function () {
+        if (this.selectable) {
+            this.$item.find('span').addClass('selected');
+        }
+        this.secondSetFlag = true;
+        this.smallCategory.itemClicked(this);
+        this.secondSetFlag = false;
+        this.selectable = !this.selectable;
     },
     remove: function () {
         if (!this.secondSetFlag) {

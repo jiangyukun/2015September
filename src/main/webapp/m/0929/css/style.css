@@ -92,8 +92,19 @@ ul li a.hover {
     margin: 8px;
 }
 
-.reelect-icon-color {
+.reelect-icon-color, .reelect-btn, .icon-color-plus {
     color: #22B14C;
+}
+
+.reelect-btn {
+    margin: 10px 0 0 40px;
+    padding: 2px 3px;
+    background: #ffffff;
+    border: 1px solid #22b14c;
+}
+
+.icon-color-tip {
+    color: #808080;
 }
 
 .small-category-container {
@@ -102,6 +113,11 @@ ul li a.hover {
     margin-top: 10px;
     border: 1px solid #ddd;
     display: none;
+}
+
+.product-select-tip {
+    height: 32px;
+    vertical-align: middle;
 }
 
 .small-category {
@@ -131,7 +147,7 @@ ul li a.hover {
 
 .search-menu-list {
     width: 100%;
-    top: 42px;
+    top: 73px;
     position: absolute;
     display: none;
     background: white;
@@ -180,7 +196,7 @@ dd {
     font-size: 14px;
 }
 
-.reelect, .item, .search-remove, .close-container, .search-container-item, .clickable {
+.reelect, .reelect-btn, .item, .search-remove, .close-container, .search-container-item, .clickable {
     cursor: pointer;
 }
 
