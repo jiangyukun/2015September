@@ -1,0 +1,283 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*background: #F8F8F8;*/
+    line-height: 1;
+}
+
+a {
+    cursor: pointer;
+}
+
+ul {
+    width: 180px;
+    background: #faf2dd;
+    position: relative;
+    z-index: 0;
+    padding: 20px 20px 30px;
+    height: 100%;
+}
+
+ul li {
+    list-style-type: none;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #F8F8F8;
+}
+
+ul li a {
+    color: #666;
+    display: block;
+}
+
+ul li a:hover {
+    color: #FF5F3E;
+    text-decoration: none;
+}
+
+ul li a.hover {
+    color: #FF5F3E;
+}
+
+#current {
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    background: #F8F8F8;
+    border-right: 5px solid #FF5F3E;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    z-index: -1;
+}
+
+.product-container {
+    width: 1000px;
+    margin: 100px 50px 50px 100px;
+    font-size: 15px;
+    position: relative;;
+}
+
+.search-condition {
+    display: inline-block;
+    border: 1px dotted orange;
+    padding: 0 10px;
+    min-width: 250px;
+}
+
+.btn-tip {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.addTip {
+    padding: 10px;
+    font-size: 17px;
+}
+
+#selectedProducts {
+    display: none;
+    margin: 2px 10px;
+    font-size: 14px;
+}
+
+.reelect {
+    margin: 8px;
+}
+
+.reelect-icon-color, .reelect-btn, .icon-color-plus {
+    color: #22B14C;
+}
+
+.reelect-btn {
+    margin: 10px 0 0 40px;
+    padding: 2px 3px;
+    background: #ffffff;
+    border: 1px solid #22b14c;
+}
+
+.icon-color-tip {
+    color: #808080;
+    margin: 15px -5px 0 0;
+}
+
+.small-category-container {
+    width: 100%;
+    min-height: 35px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    display: none;
+}
+
+.product-select-tip {
+    height: 32px;
+    vertical-align: middle;
+}
+
+.small-category {
+    padding: 5px 5px;
+}
+
+.small-category-tip {
+    display: inline-block;
+    padding-top: 3px;
+    vertical-align: top;
+}
+
+.small-category-text {
+    width: 75px;
+    text-align: right;
+}
+
+.item-container {
+    display: inline-block;
+    max-width: 750px;
+}
+
+.search-container-item {
+    padding: 4px 5px;
+    display: inline-block;
+}
+
+.search-menu-list {
+    width: 100%;
+    top: 73px;
+    position: absolute;
+    display: none;
+    background: white;
+}
+
+#category_menu_list, .content {
+    border: 1px solid #ddd;
+    min-height: 250px;
+    float: left;
+}
+
+#category_menu_list {
+    border-right: 0;
+}
+
+.sub-content {
+    padding: 10px;
+    margin: 10px 0 10px 10px;
+    width: 808px;
+}
+
+.close-container {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 40px;
+    height: 20px;
+    z-index: 10;
+}
+
+dl {
+    padding: 3px 5px;
+    border-bottom: 1px dotted #ccc;
+    width: 100%;
+}
+
+dt {
+    padding: 3px;
+    font-size: 14px;
+    color: #f0ad4e;
+}
+
+dd {
+    display: inline-block;
+    padding: 3px;
+    font-size: 14px;
+}
+
+.reelect, .reelect-btn, .item, .search-remove, .close-container, .search-container-item, .clickable {
+    cursor: pointer;
+}
+
+.search-container-item-clicked {
+    color: red;
+}
+
+.item {
+    padding: 2px 3px;
+}
+
+.selected {
+    color: grey;
+    cursor: auto !important;
+}
+
+.not-selected {
+    cursor: auto;
+}
+
+.confirm-btn {
+    color: green;
+}
+
+.remove-btn {
+    width: 14px;
+    height: 14px;
+}
+
+.product-brand {
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: none;
+}
+
+.brand-text, .brand-items {
+    float: left;
+}
+
+.brand-name {
+    text-align: right;
+    width: 69px;
+}
+
+.brand-items {
+    width: 85%;
+}
+
+.brand-item {
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 8px 10px 8px;
+}
+
+.brand-more {
+    float: right;
+    width: 50px;
+    border: 0;
+    cursor: pointer;
+    color: #585858;
+}
+
+.brand-item-clicked {
+    color: red;
+}
+
+.brand-confirm-btn {
+    margin: 0 auto;
+    width: 100px;
+}
+
+.brand-confirm-btn .btn {
+    color: #fff;
+    background-color: #23b14d;
+    padding: 2px 8px;
+}
+
+.brand-confirm-btn .btn-clicked {
+    color: white;
+    background-color: grey
+}
