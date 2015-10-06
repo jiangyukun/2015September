@@ -22,6 +22,7 @@ _.extend(SearchBox.prototype, Backbone.Events, {
         var self = this;
         this.productManage.addListener('close', function () {
             self.$reelectBtn.hide();
+            self.$reelectAndRemoveTip.hide();
             if (self.smallCategoryList.length != 0) {
                 self.$openSelectTip.show();
             }
