@@ -24,6 +24,7 @@ SmallCategory.prototype = {
             self.itemList.push(item);
         });
         this.$smallCategoryInput.change(function () {
+            self.productManage.setSingleOperation(true);
             if (self.$smallCategoryInput.prop('checked')) {
                 _.each(self.itemList, function (item, index) {
                     item.add();
@@ -33,6 +34,7 @@ SmallCategory.prototype = {
                     item.remove();
                 });
             }
+            self.productManage.setSingleOperation(false);
         });
     },
     changeState: function (item, type, triggerEvent) {

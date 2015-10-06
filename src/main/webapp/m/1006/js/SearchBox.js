@@ -3,6 +3,10 @@ function SearchBox($container, productManage) {
     this.productManage = productManage;
     this.$appendContainer = $('#smallCategoryContainer');
     this.$selectTip = this.$container.find('#selectTip');
+    this.$openSelectTip = this.$selectTip.find('.tip1');
+    this.$onlyOneSmallCategoryTip = this.$selectTip.find('.tip2');
+    this.$reelectAndRemoveTip = this.$selectTip.find('.tip3');
+
     this.$reelectBtn = this.$container.find('.reelect-btn');
     this._smallCategoryTemplate = _.template($('#smallCategoryTemplate').text());
     this._itemTemplate = _.template($('#itemTemplate').text());
@@ -18,6 +22,16 @@ _.extend(SearchBox.prototype, Backbone.Events, {
         var self = this;
         this.productManage.addListener('close', function () {
             self.$reelectBtn.hide();
+            if (self.smallCategoryList.length != 0) {
+                self.$openSelectTip.show();
+            }
+        });
+        this.productManage.addListener('open', function () {
+            if (self.smallCategoryList.length != 0) {
+                self.$reelectBtn.show();
+                self.$reelectAndRemoveTip.show();
+            }
+            self.$openSelectTip.hide();
         });
         this.$reelectBtn.click(function () {
             self.productManage.clickArea = 1;
@@ -48,7 +62,10 @@ _.extend(SearchBox.prototype, Backbone.Events, {
                 self.removeSmallCategory(smallCategory.uuid);
                 self.trigger('smallCategoryChanged');
             });
-            self.$selectTip.find('.tip2').show();
+            this.$onlyOneSmallCategoryTip.show();
+            this.$reelectAndRemoveTip.hide();
+        } else {
+            this.$reelectAndRemoveTip.show();
         }
         this.$appendContainer.append(html);
         var $container = this.$appendContainer.find('#' + uuid);
@@ -61,12 +78,15 @@ _.extend(SearchBox.prototype, Backbone.Events, {
         this.smallCategoryList.push(localSmallCategory);
         return localSmallCategory;
     },
-    addSmallCategoryItem: function (smallCategory, item) {
+    addSmallCategoryItem: function (smallCategory, item, isSingleOperation) {
         var self = this;
         item.internalId = '__item_' + item.id;
         var localSmallCategory = this.getSmallCategory(smallCategory.uuid);
         if (localSmallCategory == null) {
             localSmallCategory = this.addSmallCategory(smallCategory);
+        } else if (isSingleOperation == false) {
+            this.$onlyOneSmallCategoryTip.hide();
+            this.$reelectAndRemoveTip.show();
         }
         if (arrayUtil.isExist(localSmallCategory.itemList, item)) {
             return;
@@ -91,11 +111,12 @@ _.extend(SearchBox.prototype, Backbone.Events, {
         this.smallCategoryList = arrayUtil.removeElement(self.smallCategoryList, smallCategory);
         if (this.smallCategoryList.length == 0) {
             this.$reelectBtn.hide();
+            this.$reelectAndRemoveTip.hide();
             this.trigger('productIsEmpty');
         }
     },
     removeSmallCategoryItem: function (smallCategoryId, item, triggerEvent) {
-        var emptySmallCategory = false, self = this;
+        var self = this;
         var smallCategory = this.getSmallCategory(smallCategoryId);
         if (triggerEvent) {
             item.trigger('itemRemoved');
@@ -107,13 +128,13 @@ _.extend(SearchBox.prototype, Backbone.Events, {
             }
         });
         if (smallCategory.itemList.length == 0) {
-            emptySmallCategory = true;
+            self.removeSmallCategory(smallCategoryId);
+        } else {
+            this.$onlyOneSmallCategoryTip.hide();
+            this.$reelectAndRemoveTip.show();
         }
         if (self.currentSmallCategoryItemId == item.id) {
             self.currentSmallCategoryItemId = null;
-        }
-        if (emptySmallCategory) {
-            self.removeSmallCategory(smallCategoryId);
         }
         this.trigger('productDeSelected');
     },

@@ -9,6 +9,7 @@ function ProductManage($productContainer, $searchCondition) {
 
     this.opened = false;
     this.listenerList = [];
+    this.singleOperation = false;
 
     this.brand = new Brand($('.product-brand'), this);
     this.searchBox = new SearchBox($searchCondition, this);
@@ -91,8 +92,6 @@ ProductManage.prototype = {
             this.$btnArea.show();
             this.$selectedProductArea.hide();
             this.$searchContainer.css({display: 'inline-block'});
-        } else {
-            this.searchBox.$selectTip.find('.tip1').show();
         }
         this.searchBox.$selectTip.find('.tip2').hide();
         this.$selectCaption.removeClass('glyphicon-remove').addClass('glyphicon-plus');
@@ -106,7 +105,6 @@ ProductManage.prototype = {
         this.$btnArea.hide();
         this.$selectedProductArea.show();
         this.$searchContainer.css({display: 'block'});
-        this.searchBox.$selectTip.find('.tip1').hide();
         this.triggerListener('open');
     },
     changeState: function () {
@@ -116,8 +114,11 @@ ProductManage.prototype = {
         }
         this.open();
     },
+    setSingleOperation: function (flag) {
+        this.singleOperation = flag;
+    },
     addSmallCategoryItem: function (smallCategory, item) {
-        this.searchBox.addSmallCategoryItem(smallCategory, item);
+        this.searchBox.addSmallCategoryItem(smallCategory, item, this.singleOperation);
     },
     removeSmallCategoryItem: function (smallCategoryId, item, triggerEvent) {
         this.searchBox.removeSmallCategoryItem(smallCategoryId, item, triggerEvent);
