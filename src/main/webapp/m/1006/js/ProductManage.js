@@ -65,6 +65,8 @@ ProductManage.prototype = {
         if (type === 'brand') {
             this.brand.on('selectBrand', listener);
             return;
+        } else if(type === 'searchItemClicked') {
+            this.searchBox.on('searchItemClicked', listener);
         }
         this.listenerList.push({
             type: type,

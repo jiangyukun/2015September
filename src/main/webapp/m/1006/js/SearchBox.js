@@ -140,31 +140,33 @@ _.extend(SearchBox.prototype, Backbone.Events, {
         this.trigger('productDeSelected');
     },
     itemClick: function (localSmallCategory, item) {
-        var i, j, self = this, brandItems, itemId = item.id, itemText = item.text;
+        var i, j, brandItems, itemId = item.id, itemText = item.text;
         for (i = 0; i < this.smallCategoryList.length; i++) {
             var smallCategory = this.smallCategoryList[i];
             var itemList = smallCategory.itemList;
-            var beforeSmallCategoryItemId = self.currentSmallCategoryItemId;
+            var beforeSmallCategoryItemId = this.currentSmallCategoryItemId;
             for (j = 0; j < itemList.length; j++) {
                 var _item = itemList[j];
-                var $item = self.$appendContainer.find('#' + _item.internalId);
+                var $item = this.$appendContainer.find('#' + _item.internalId);
                 if (_item.id == itemId) {
-                    if (self.productManage.opened) {
-                        self.removeSmallCategoryItem(smallCategory.uuid, _item, true);
+                    if (this.productManage.opened) {
+                        this.removeSmallCategoryItem(smallCategory.uuid, _item, true);
                         $item.remove();
                         if (beforeSmallCategoryItemId == itemId) {
-                            self.currentSmallCategoryItemId = null;
+                            this.currentSmallCategoryItemId = null;
                         }
                         return;
                     }
                     if ($item.hasClass('search-container-item-clicked')) {
-                        self.currentSmallCategoryItemId = null;
+                        this.currentSmallCategoryItemId = null;
                         $item.removeClass('search-container-item-clicked');
+                        this.trigger('searchItemClicked', 'deselect', this.productManage.getProductInfo());
                     } else {
                         $item.addClass('search-container-item-clicked');
-                        self.currentSmallCategoryItemId = itemId;
+                        this.currentSmallCategoryItemId = itemId;
+                        this.trigger('searchItemClicked', 'select', this.productManage.getProductInfo());
                     }
-                } else if (_item.id != beforeSmallCategoryItemId || !self.productManage.opened) {
+                } else if (_item.id != beforeSmallCategoryItemId || !this.productManage.opened) {
                     $item.removeClass('search-container-item-clicked');
                 }
             }

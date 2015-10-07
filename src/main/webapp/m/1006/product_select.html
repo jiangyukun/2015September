@@ -213,7 +213,10 @@
         productManage.addListener('close', function (productInfo) {
             console.log(productInfo);
         });
-
+        productManage.addListener('searchItemClicked', function (type, productInfo) {
+            console.log(type);
+            console.log(productInfo);
+        });
         productManage.addListener('brand', function (productInfo) {
             console.log(productInfo);
         });
